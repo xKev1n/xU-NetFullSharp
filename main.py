@@ -18,14 +18,14 @@ import os
 import tensorflow as tf
 
 def main():
-    ## Check availability of GPU
+    ## Check the availability of GPU
     check_capabilities()
 
     ## Define the model
     model = xUNetFS()
     
     ## Load weights if needed
-    #load_weights(model, ".tf_checkpoints/512/ATT_FULLSHARPNET/ATT_FULLSHARPNET_wDS_b10_f64_best_weights_11.hdf5")
+    #load_weights(model, "PATH_TO_WEIGHTS")
 
     # Compile
     model = compile_model(model)
