@@ -13,12 +13,12 @@ from Att_xUNetFS import Att_xUNetFS
 
 def main():
     # Define the name of the model
-    model_name='ATT_UNET'
+    model_name='XUNETFS'
     
     #model = DeBoNet(COMPILE=False, NAME=model_name)        # If DeBoNet
-    model = xUNetFS(DS=True)
+    model = xUNetFS()
     
-    load_weights(model, ".tf_checkpoints/512/"+model_name+"/"+model_name+"_b10_f256_best_weights_61.hdf5")
+    load_weights(model, ".tf_checkpoints/512/"+model_name+"/"+model_name+"_b10_f128_best_weights_30.hdf5")
 
     ## INTERNAL TEST SET
     eval_test_results(model, model_name, RGB=False)         # RGB = True is necessary for DeBoNet models
