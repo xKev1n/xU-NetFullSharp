@@ -416,7 +416,7 @@ def train_model(model):
     print(train_steps)
     print(valid_steps)
     
-    model_name = 'XUNET_FULLSCALE'
+    model_name = 'XUNETFS'
     filepath=".tf_checkpoints/512/"+model_name+"/"+model_name+"_b10_f128_best_weights_{epoch:02d}.hdf5"
     checkpoint = ModelCheckpoint(filepath, verbose=1, save_weights_only=True, monitor='val_loss', save_best_only=True)
     lr_scheduler = LearningRateScheduler(lr_time_based_decay, verbose=1)
