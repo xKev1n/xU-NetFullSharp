@@ -16,8 +16,10 @@ BATCH_SIZE = 10
 def preprocess_image(image):
     img = cv.normalize(image, None, 0, 255, cv.NORM_MINMAX)
     if random() < .5:
-        img = cv.bitwise_not(img)    # INVERT THE IMAGE
+        img = cv.bitwise_not(img)    # INVERT THE IMAGE WITH 50 % PROBABILITY
     return img
+
+## DATA GENERATOR
 
 class DataGen(keras.utils.data_utils.Sequence):
     def __init__(self, ids, path, batch_size=BATCH_SIZE, image_size=IMAGE_SIZE, RGB=False):
@@ -49,7 +51,7 @@ class DataGen(keras.utils.data_utils.Sequence):
         
         val_img = img_to_array(val_img)
         
-        # Normalisation of the images    
+        # Normalization of the images    
         img = img / 255.0
         val_img = val_img / 255.0
 
