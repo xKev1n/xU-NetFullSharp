@@ -24,13 +24,13 @@ Blocks of the proposed architecture are made up of 2D convolutions with differen
 </p>
 
 # Datasets
-The experiments utilized two datasets – extensively augmented JSRT and VinDr-CXR [4]. Both datasets are available in the `datasets` folder in the cloud storage.
+The experiments utilized two datasets – extensively augmented JSRT and VinDr-CXR [4]. Both datasets are available in the `datasets` folder in the cloud storage (https://drive.google.com/file/d/1f0LP05jhNPI0UjqkQhpAyBbp8KV_2y4Y/view?usp=drive_link).
 Firstly, the JSRT dataset containing bone shadow-suppressed CXRs was split into training, validation, and testing sets and was extensively augmented to achieve a sufficient amount of usable images and to ensure the model’s robustness (both original and augmented images are available in the `JSRT` subfolder).
 The second, VinDr-CXR, dataset was augmented by randomly applying inversion and used for independent testing (the used testing set is available in the `VinDrCXR` subfolder). 
 
 # Results
 Results of the internal testing (on the JSRT dataset) are available in the `internal_test` folder; external testing results (on the VinDr-CXR dataset) are available in the `external_test` folder.
-To reproduce the results, use the `test.py` file with desired model and path to corresponding weights.
+To reproduce the results, use the `test.py` file with desired model and path to corresponding weights. Sample outputs from individual models can be seen in `/images/xray` folder in this repository.
 
 # References
 [1] H. Huang et al., ‘UNet 3+: A Full-Scale Connected UNet for Medical Image Segmentation’, in ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2020, pp. 1055–1059. doi: 10.1109/ICASSP40776.2020.9053405.
