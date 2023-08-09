@@ -24,7 +24,7 @@ Blocks of the proposed architecture are made up of 2D convolutions with differen
 </p>
 
 # Datasets
-The experiments utilized two datasets – extensively augmented JSRT and VinDr-CXR [4]. Both datasets are available in the `datasets` folder in the cloud storage (https://drive.google.com/file/d/1f0LP05jhNPI0UjqkQhpAyBbp8KV_2y4Y/view?usp=drive_link).
+The experiments utilized two datasets – extensively augmented JSRT and VinDr-CXR [4]. Both datasets are available in the `datasets` folder in the [cloud storage](https://drive.google.com/file/d/1f0LP05jhNPI0UjqkQhpAyBbp8KV_2y4Y/view?usp=drive_link).
 Firstly, the JSRT dataset containing bone shadow-suppressed CXRs was split into training, validation, and testing sets and was extensively augmented to achieve a sufficient amount of usable images and to ensure the model’s robustness (both original and augmented images are available in the `JSRT` subfolder).
 The second, VinDr-CXR, dataset was augmented by randomly applying inversion and used for independent testing (the used testing set is available in the `VinDrCXR` subfolder). 
 
