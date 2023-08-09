@@ -10,7 +10,8 @@ The xU-NetFullSharp is based on the most recent U-NetSharp [5] architecture and 
 
 <p align="center">
   <img src="https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/xU-NetFS_EN.svg?raw=true" alt>
-  <br>
+</p>
+<p align="center">
   <em>The architecture of the proposed xU-NetFullSharp</em>
 </p>
 
