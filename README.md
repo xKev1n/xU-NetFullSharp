@@ -5,8 +5,8 @@ In this paper, an automated deep learning-based framework for bone shadow suppre
 Among those, a novel neural network architecture called xU-NetFullSharp is proposed. This network is inspired by the most modern U-NetSharp [3] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. 
 Additionally, recent state-of-the-art CNN models from [4] and [1] designed for this task were used for comparison. Utilized models are available in the `models` folder in the cloud storage.
 
-![alt text](https://github.com/xKev1n/xU-NetFullSharp/images/models/main/xU-NetFS_EN.svg?raw=true)
-![alt text](https://github.com/xKev1n/xU-NetFullSharp/images/models/main/DilatedBlockEN.svg?raw=true)
+![alt text](https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/xU-NetFS_EN.svg?raw=true)
+![alt text](https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/DilatedBlockEN.svg?raw=true)
 
 # Datasets
 The experiments utilized two datasets – extensively augmented JSRT and VinDr-CXR [2]. Both datasets are available in the `datasets` folder in the cloud storage.
