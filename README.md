@@ -9,18 +9,14 @@ Additionally, recent state-of-the-art CNN models from [6] and [2] designed for t
 The xU-NetFullSharp is based on the most recent U-NetSharp [5] architecture and utilizes multi-scale skip connections both ways in a similar way to the preceding U-Net3+ [1]. The ReLU activation is changed for more modern xUnit [3] activation to ensure more relevant activation maps.
 
 <p align="center">
-  <figure>
   <img src="https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/xU-NetFS_EN.svg?raw=true">
-  <figcaption>The architecture of the proposed xU-NetFullSharp</figcaption>
-  </figure>
+  <em>The architecture of the proposed xU-NetFullSharp</em>
 </p>
 
 Blocks of the proposed architecture are made up of 2D convolutions with different rates of dilation and xUnit [3] activation functions.
 <p align="center">
-  <figure>
   <img src="https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/DilatedBlockEN.svg?raw=true">
-  <figcaption>The structure of dilated blocks</figcaption>
-  </figure>
+  <em>The structure of dilated blocks</em>
 </p>
 
 # Datasets
