@@ -6,6 +6,7 @@ Among those, a novel neural network architecture called xU-NetFullSharp is propo
 Additionally, recent state-of-the-art CNN models from [4] and [1] designed for this task were used for comparison. Utilized models are available in the `models` folder in the cloud storage.
 <p align="center">
 ![alt text](https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/xU-NetFS_EN.svg?raw=true)
+  <img src="https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/xU-NetFS_EN.svg?raw=true">
 </p>
 <p align="center">
 ![alt text](https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/DilatedBlockEN.svg?raw=true)
