@@ -17,7 +17,8 @@ The xU-NetFullSharp is based on the most recent U-NetSharp [5] architecture and 
 Blocks of the proposed architecture are made up of 2D convolutions with different rates of dilation and xUnit [3] activation functions.
 <p align="center">
   <img src="https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/DilatedBlockEN.svg?raw=true" alt>
-  <br>
+</p>
+<p align="center">
   <em>The structure of dilated blocks</em>
 </p>
 
