@@ -91,79 +91,79 @@
 ### Experts' rating of the results on the external VinDr-CXR dataset
 <table>
     <tr>
-        <td>**Models**</td>
-        <td>**Average rating**\(best = 1)</td>
-        <td>**Expert’s comment**</td>
+        <td><b>Models</b></td>
+        <td><b>Average rating</b><br>(best = 1)</td>
+        <td><b>Expert’s comment</b></td>
         <td></td>
     </tr>
     <tr>
-        <td>**U-Net**</td>
+        <td><b>U-Net</b></td>
         <td>3.0</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
-        <td>**Attention** **U-Net**</td>
+        <td><b>Attention U-Net</b></td>
         <td>2.8</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
-        <td>**U-Net++**</td>
+        <td><b>U-Net++</b></td>
         <td>3.0</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
-        <td>**Attention** **U-Net++**</td>
+        <td><b>Attention U-Net++</b></td>
         <td>**2.3**</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
-        <td>**U-Net3+**</td>
+        <td><b>U-Net3+</b></td>
         <td>2.8</td>
-        <td>**Some problems with detail retention**</td>
+        <td><b>Some problems with detail retention.</b></td>
         <td></td>
     </tr>
     <tr>
-        <td>**U-NetSharp**</td>
-        <td>**1.7**</td>
-        <td>**Second best in bone shadow suppression. Great retention of details.**</td>
+        <td><b>U-NetSharp</b></td>
+        <td><b>1.7</b></td>
+        <td><b>Second best in bone shadow suppression. Great retention of details.</b></td>
         <td></td>
     </tr>
     <tr>
-        <td>**xU-NetFullSharp**</td>
-        <td>**1.2**</td>
-        <td>**Consistently the best in bone shadow suppression. Great retention of details.**</td>
+        <td><b>xU-NetFullSharp</b></td>
+        <td><b>1.2</b></td>
+        <td><b>Consistently the best in bone shadow suppression. Great retention of details.</b></td>
         <td></td>
     </tr>
     <tr>
-        <td>**Attention** **xU-NetFullSharp**</td>
+        <td><b>Attention xU-NetFullSharp</b></td>
         <td>3.0</td>
         <td></td>
         <td></td>
     </tr>
     <tr>
-        <td>**U-Net-ResNet-18**</td>
+        <td><b>U-Net-ResNet-18</b></td>
         <td>4.5</td>
         <td></td>
         <td rowspan=4>Concurrent models</td>
     </tr>
     <tr>
-        <td>**FPN-ResNet-18**</td>
+        <td><b>FPN-ResNet-18</b></td>
         <td>4.3</td>
-        <td>**Major deformation of the chest silhouette in one sample!**</td>
+        <td><b>Major deformation of the chest silhouette in one sample!</b></td>
         <td></td>
     </tr>
     <tr>
-        <td>**FPN-EfficientNet-B0**</td>
+        <td><b>FPN-EfficientNet-B0</b></td>
         <td>3.7</td>
-        <td>**Blurry details**</td>
+        <td><b>Blurry details.</b></td>
         <td></td>
     </tr>
     <tr>
-        <td>**Kalisz Marczyk’s Autoencoder**</td>
+        <td><b>Kalisz Marczyk’s Autoencoder</b></td>
         <td>3.5</td>
         <td></td>
         <td></td>
