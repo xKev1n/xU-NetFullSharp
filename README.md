@@ -163,134 +163,135 @@
 ### Experts' rating of the results on the external Gusarev DES dataset
 <table>
     <tr>
-        <td>**Models**</td>
-        <td>&lt;b&gt;Vessel visibility&lt;/b&gt; &lt;br&gt; 3: Clearly visible &lt;br&gt; 2: Visible &lt;br&gt; 1: Not visible</td>
-        <td>**Airway visibility**  &lt;br&gt; 3: Lobar and intermediate bronchi &lt;br&gt; 2: Main bronchus and rump &lt;br&gt; 1: Trachea</td>
-        <td>**Bone shadow suppression** &lt;br&gt; 3: Nearly perfect &lt;br&gt; 2: Less than 5 unsuppressed bones &lt;br&gt; 1: 5 or more unsuppressed bones</td>
-        <td>**Overall bone shadow suppression performance** &lt;br&gt; 1: Excellent &lt;br&gt; 3: Average &lt;br&gt; 5: Poor</td>
-        <td>**Nodule visibility** &lt;br&gt; 3: More apparent &lt;br&gt; 2: Equally as apparent &lt;br&gt; 1: Less apparent</td>
+        <td><b>Models</b></td>
+        <td><b>Vessel visibility</b> 3: Clearly visible 2: Visible 1: Not visible</td>
+        <td><b>Airway visibility</b> 3: Lobar and intermediate bronchi 2: Main bronchus and rump 1: Trachea</td>
+        <td><b>Bone shadow suppression</b> 3: Nearly perfect 2: Less than 5 unsuppressed bones 1: 5 or more unsuppressed bones</td>
+        <td><b>Overall bone shadow suppression performance</b> 1: Excellent 3: Average 5: Poor</td>
+        <td><b>Nodule visibility</b> 3: More apparent 2: Equally as apparent 1: Less apparent</td>
     </tr>
     <tr>
-        <td>**DES (Reference)**</td>
-        <td>**3**</td>
-        <td>**1.8**</td>
-        <td>**2.7**</td>
-        <td>**1.3**</td>
-        <td>**2.9**</td>
+        <td><b>DES (Reference)</b></td>
+        <td><b>3</b></td>
+        <td><b>1.8</b></td>
+        <td><b>2.7</b></td>
+        <td><b>1.3</b></td>
+        <td><b>2.9</b></td>
     </tr>
     <tr>
-        <td>**Attention U-Net**</td>
-        <td>**3**</td>
+        <td><b>Attention U-Net</b></td>
+        <td><b>3</b></td>
         <td>2.1</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>2.8</td>
-        <td>**2.3**</td>
+        <td><b>2.3</b></td>
     </tr>
     <tr>
-        <td>**Attention U-Net++**</td>
-        <td>**3**</td>
+        <td><b>Attention U-Net++<b></td>
+        <td><b>3</b></td>
         <td>2.2</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>2.3</td>
         <td>2.1</td>
     </tr>
     <tr>
-        <td>**Attention xU-NetFullSharp**</td>
-        <td>**3**</td>
+        <td><b>Attention xU-NetFullSharp<b></td>
+        <td><b>3</b></td>
         <td>2.3</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>2.4</td>
         <td>2</td>
     </tr>
     <tr>
-        <td>**DeBoNet**</td>
-        <td>**2**</td>
+        <td><b>DeBoNet</b></td>
+        <td><b>2</b></td>
         <td>1.8</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>4.2</td>
         <td>1.4</td>
     </tr>
     <tr>
-        <td>**FPN-EfficientNet-B0**</td>
-        <td>**3**</td>
+        <td><b>FPN-EfficientNet-B0<b></td>
+        <td><b>3</b></td>
         <td>2.2</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>3.3</td>
         <td>1.5</td>
     </tr>
     <tr>
-        <td>**FPN-ResNet-18**</td>
-        <td>**3**</td>
+        <td><b>FPN-ResNet-18<b></td>
+        <td><b>3</b></td>
         <td>2.3</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>3.5</td>
         <td>2</td>
     </tr>
     <tr>
-        <td>**U-Net-ResNet-18**</td>
-        <td>**3**</td>
+        <td><b>U-Net-ResNet-18<b></td>
+        <td><b>3</b></td>
         <td>2.3</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>4.9</td>
         <td>2.1</td>
     </tr>
     <tr>
-        <td>**Deep Residual U-Net**</td>
+        <td><b>Deep Residual U-Net<b></td>
         <td>2.2</td>
         <td>2</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>5</td>
         <td>1.9</td>
     </tr>
     <tr>
-        <td>**Kalisz Marczyk’s Autoencoder**</td>
-        <td>**3**</td>
+        <td><b>Kalisz Marczyk’s Autoencoder<b></td>
+        <td><b>3</b></td>
         <td>2.3</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>3.1</td>
         <td>2.1</td>
     </tr>
     <tr>
-        <td>**U-Net**</td>
-        <td>**3**</td>
+        <td><b>U-Net</b></td>
+        <td><b>3</b></td>
         <td>2.3</td>
-        <td>**1**</td>
+        <td><b>1</b></td>
         <td>2.6</td>
         <td>2.2</td>
     </tr>
     <tr>
-        <td>**U-NetSharp**</td>
-        <td>**3**</td>
-        <td>**2.4**</td>
-        <td>**1**</td>
+        <td><b>U-NetSharp</b></td>
+        <td><b>3</b></td>
+        <td><b>2.4</b></td>
+        <td><b>1</b></td>
         <td>2.1</td>
         <td>2.2</td>
     </tr>
     <tr>
-        <td>**U-Net3+**</td>
-        <td>**3**</td>
-        <td>**2.4**</td>
-        <td>**1**</td>
+        <td><b>U-Net3+</b></td>
+        <td><b>3</b></td>
+        <td><b>2.4</b></td>
+        <td><b>1</b></td>
         <td>2.5</td>
         <td>2.2</td>
     </tr>
     <tr>
-        <td>**U-Net++**</td>
-        <td>**3**</td>
-        <td>**2.4**</td>
-        <td>**1**</td>
+        <td><b>U-Net++</b></td>
+        <td><b>3</b></td>
+        <td><b>2.4</b></td>
+        <td><b>1</b></td>
         <td>2.2</td>
         <td>2.1</td>
     </tr>
     <tr>
-        <td>**xU-NetFullSharp**</td>
-        <td>**3**</td>
-        <td>**2.4**</td>
-        <td>**1**</td>
-        <td>**1.6**</td>
-        <td>**2.3**</td>
+        <td><b>xU-NetFullSharp</b></td>
+        <td><b>3</b></td>
+        <td><b>2.4</b></td>
+        <td><b>1</b></td>
+        <td><b>1.6</b></td>
+        <td><b>2.3</b></td>
     </tr>
 </table>
+
 ## References
 <div align="justify">
   
