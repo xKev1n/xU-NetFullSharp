@@ -85,29 +85,9 @@ To reproduce the results, use the `test.py` file with the desired model and path
 | **Kalisz Marczyk’s Autoencoder**      | 3.5                            |                                                                                   |                   |
 
 # Experts' rating of the results on the external Gusarev DES dataset
-| **Models**                                     | **Vessel visibility**                                                    | **Airway visibility**                                                                 | **Bone shadow suppression**       | **Overall bone shadow suppression performance**            | **Nodule visibility** |
+| **Model**                                      | **Vessel visibility**                                                    | **Airway visibility**                                                                 | **Bone shadow suppression**       | **Overall bone shadow suppression performance**            | **Nodule visibility** |
 | ---------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | --------------------------------- | ---------------------------------------------------------- | --------------------- |
-| 3: Clearly visible
-
-2: Visible
-
-1: Not visible | 3: Lobar and intermediate bronchi
-
-2: Main bronchus and rump
-
-1: Trachea | 3: Nearly perfect
-
-2: Less than 5 unsuppressed bones
-
-1: 5 or more unsuppressed bones | 1: Excellent
-
-3: Average
-
-5: Poor | 3: More apparent
-
-2: Equally as apparent
-
-1: Less apparent |
+| 3: Clearly visible 2: Visible 1: Not visible 	 | 3: Lobar and intermediate bronchi 2: Main bronchus and rump 1: Trachea 	| 3: Nearly perfect 2: Less than 5 unsuppressed bones 1: 5 or more unsuppressed bones 	| 1: Excellent 3: Average 5: Poor 	| 3: More apparent 2: Equally as apparent 1: Less apparent 	 |
 | **DES (Reference)**                            | **3**                                                                    | **1.8**                                                                               | **2.7**                           | **1.3**                                                    | **2.9**               |
 | **Attention U-Net**                            | **3**                                                                    | 2.1                                                                                   | **1**                             | 2.8                                                        | **2.3**               |
 | **Attention U-Net++**                          | **3**                                                                    | 2.2                                                                                   | **1**                             | 2.3                                                        | 2.1                   |
