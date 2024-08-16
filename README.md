@@ -1,4 +1,4 @@
-## Official repository of the paper xU-NetFullSharp: The novel deep learning architecture for chest X-ray bone shadow suppression
+## Official repository of the paper xU-NetFullSharp: The Novel Deep Learning Architecture for Chest X-Ray Bone Shadow Suppression
 
 # Introduction
 <p align="justify">
@@ -35,10 +35,9 @@
 # Datasets
 <p align="justify">
   The experiments utilized three datasets – extensively augmented JSRT, VinDr-CXR [5], and Gusarev DES [1] dataset. The JSRT as well as the VinDr-CXR datasets are available in the `datasets` folder in the [cloud
-  storage](https://drive.google.com/file/d/1f0LP05jhNPI0UjqkQhpAyBbp8KV_2y4Y/view?usp=drive_link). The Gusarev DES dataset can be obtained from the following 
-  [GitHub repository](https://github.com/diaoquesang/A-  detailed-summarization-about-bone-suppression-in-Chest-X-rays).
-  Firstly, the JSRT dataset containing bone shadow-suppressed CXRs was split into training, validation, and testing sets and was extensively augmented to achieve a sufficient amount of usable images and to ensure
-  the model’s robustness (both original and augmented images are available in the `JSRT` subfolder).
+  storage](https://drive.google.com/file/d/1f0LP05jhNPI0UjqkQhpAyBbp8KV_2y4Y/view?usp=drive_link). The Gusarev DES dataset can be obtained from the following [GitHub repository](https://github.com/diaoquesang/A-  
+  detailed-summarization-about-bone-suppression-in-Chest-X-rays). Firstly, the JSRT dataset containing bone shadow-suppressed CXRs was split into training, validation, and testing sets and was extensively augmented 
+  to achieve a sufficient amount of usable images and to ensure the model’s robustness (both original and augmented images are available in the `JSRT` subfolder).
   The second, VinDr-CXR, dataset was augmented by randomly applying inversion and used for independent testing (the used testing set is available in the `VinDrCXR` subfolder). From the third, Gusarev DES, dataset
   expert pulmonologists selected images where the rib shadows collide with pulmonary nodules. These images were then used to conduct a performance assessment focused on clinical applications of the models.
 </p>
@@ -70,7 +69,7 @@
 
 # Histogram comparison
 | **Models**                         | **Correlation** | **Intersection** | **𝜒<sup>2</sup>** | **Bhattacharyya** |
-| ---------------------------------- | :-------------: | :--------------: | :----------------: | "---------------: |
+| ---------------------------------- | :-------------: | :--------------: | :---------------: | "---------------: |
 | **U-Net**                          | 0.9443          | 9.8999           | 6.1702             | 0.1292            |
 | **Attention U-Net**                | 0.9449          | 9.8873           | 8.3925             | 0.1295            |
 | **Deep Residual U-Net**            | 0.9358          | 9.5917           | 5.8152             | 0.1478            |
