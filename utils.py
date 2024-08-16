@@ -31,11 +31,12 @@ BATCH_SIZE = 10
 
 # MAE
 def mae(y_true, y_pred):
-    return tf.math.reduce_mean(tf.keras.losses.MAE(y_true, y_pred))
-
+    mae = tf.keras.losses.MeanAbsoluteError()
+    return mae(y_true, y_pred)
 # MSE
 def mse(y_true, y_pred):
-    return tf.math.reduce_mean(tf.keras.losses.MSE(y_true, y_pred))
+    mse = tf.keras.losses.MeanSquaredError()
+    return mse(y_true, y_pred)
 
 # PSNR
 def psnr(y_true, y_pred):
