@@ -163,132 +163,132 @@
 ### Experts' rating of the results on the external Gusarev DES dataset
 <table>
     <tr>
-        <td><b>Models</b></td>
-        <td><b>Vessel visibility</b> 3: Clearly visible 2: Visible 1: Not visible</td>
-        <td><b>Airway visibility</b> 3: Lobar and intermediate bronchi 2: Main bronchus and rump 1: Trachea</td>
-        <td><b>Bone shadow suppression</b> 3: Nearly perfect 2: Less than 5 unsuppressed bones 1: 5 or more unsuppressed bones</td>
-        <td><b>Overall bone shadow suppression performance</b> 1: Excellent 3: Average 5: Poor</td>
-        <td><b>Nodule visibility</b> 3: More apparent 2: Equally as apparent 1: Less apparent</td>
+        <td align='center'><b>Models</b></td>
+        <td align='center'><b>Vessel visibility</b> 3: Clearly visible 2: Visible 1: Not visible</td>
+        <td align='center'><b>Airway visibility</b> 3: Lobar and intermediate bronchi 2: Main bronchus and rump 1: Trachea</td>
+        <td align='center'><b>Bone shadow suppression</b> 3: Nearly perfect 2: Less than 5 unsuppressed bones 1: 5 or more unsuppressed bones</td>
+        <td align='center'><b>Overall bone shadow suppression performance</b> 1: Excellent 3: Average 5: Poor</td>
+        <td align='center'><b>Nodule visibility</b> 3: More apparent 2: Equally as apparent 1: Less apparent</td>
     </tr>
     <tr>
         <td><b>DES (Reference)</b></td>
-        <td><b>3</b></td>
-        <td><b>1.8</b></td>
-        <td><b>2.7</b></td>
-        <td><b>1.3</b></td>
-        <td><b>2.9</b></td>
+        <td align='center'><b>3</b></td>
+        <td align='center'><b>1.8</b></td>
+        <td align='center'><b>2.7</b></td>
+        <td align='center'><b>1.3</b></td>
+        <td align='center'><b>2.9</b></td>
     </tr>
     <tr>
         <td><b>Attention U-Net</b></td>
-        <td><b>3</b></td>
-        <td>2.1</td>
-        <td><b>1</b></td>
-        <td>2.8</td>
-        <td><b>2.3</b></td>
+        <td align='center'><b>3</b></td>
+        <td align='center'>2.1</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>2.8</td>
+        <td align='center'><b>2.3</b></td>
     </tr>
     <tr>
         <td><b>Attention U-Net++<b></td>
-        <td><b>3</b></td>
-        <td>2.2</td>
-        <td><b>1</b></td>
-        <td>2.3</td>
-        <td>2.1</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'>2.2</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>2.3</td>
+        <td align='center'>2.1</td>
     </tr>
     <tr>
         <td><b>Attention xU-NetFullSharp<b></td>
-        <td><b>3</b></td>
-        <td>2.3</td>
-        <td><b>1</b></td>
-        <td>2.4</td>
-        <td>2</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'>2.3</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>2.4</td>
+        <td align='center'>2</td>
     </tr>
     <tr>
         <td><b>DeBoNet</b></td>
-        <td><b>2</b></td>
-        <td>1.8</td>
-        <td><b>1</b></td>
-        <td>4.2</td>
-        <td>1.4</td>
+        <td align='center'><b>2</b></td>
+        <td align='center'>1.8</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>4.2</td>
+        <td align='center'>1.4</td>
     </tr>
     <tr>
         <td><b>FPN-EfficientNet-B0<b></td>
-        <td><b>3</b></td>
-        <td>2.2</td>
-        <td><b>1</b></td>
-        <td>3.3</td>
-        <td>1.5</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'>2.2</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>3.3</td>
+        <td align='center'>1.5</td>
     </tr>
     <tr>
         <td><b>FPN-ResNet-18<b></td>
-        <td><b>3</b></td>
-        <td>2.3</td>
-        <td><b>1</b></td>
-        <td>3.5</td>
-        <td>2</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'>2.3</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>3.5</td>
+        <td align='center'>2</td>
     </tr>
     <tr>
         <td><b>U-Net-ResNet-18<b></td>
-        <td><b>3</b></td>
-        <td>2.3</td>
-        <td><b>1</b></td>
-        <td>4.9</td>
-        <td>2.1</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'>2.3</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>4.9</td>
+        <td align='center'>2.1</td>
     </tr>
     <tr>
         <td><b>Deep Residual U-Net<b></td>
-        <td>2.2</td>
-        <td>2</td>
-        <td><b>1</b></td>
-        <td>5</td>
-        <td>1.9</td>
+        <td align='center'>2.2</td>
+        <td align='center'>2</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>5</td>
+        <td align='center'>1.9</td>
     </tr>
     <tr>
         <td><b>Kalisz Marczyk’s Autoencoder<b></td>
-        <td><b>3</b></td>
-        <td>2.3</td>
-        <td><b>1</b></td>
-        <td>3.1</td>
-        <td>2.1</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'>2.3</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>3.1</td>
+        <td align='center'>2.1</td>
     </tr>
     <tr>
         <td><b>U-Net</b></td>
-        <td><b>3</b></td>
-        <td>2.3</td>
-        <td><b>1</b></td>
-        <td>2.6</td>
-        <td>2.2</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'>2.3</td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>2.6</td>
+        <td align='center'>2.2</td>
     </tr>
     <tr>
         <td><b>U-NetSharp</b></td>
-        <td><b>3</b></td>
-        <td><b>2.4</b></td>
-        <td><b>1</b></td>
-        <td>2.1</td>
-        <td>2.2</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'><b>2.4</b></td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>2.1</td>
+        <td align='center'>2.2</td>
     </tr>
     <tr>
         <td><b>U-Net3+</b></td>
-        <td><b>3</b></td>
-        <td><b>2.4</b></td>
-        <td><b>1</b></td>
-        <td>2.5</td>
-        <td>2.2</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'><b>2.4</b></td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>2.5</td>
+        <td align='center'>2.2</td>
     </tr>
     <tr>
         <td><b>U-Net++</b></td>
-        <td><b>3</b></td>
-        <td><b>2.4</b></td>
-        <td><b>1</b></td>
-        <td>2.2</td>
-        <td>2.1</td>
+        <td align='center'><b>3</b></td>
+        <td align='center'><b>2.4</b></td>
+        <td align='center'><b>1</b></td>
+        <td align='center'>2.2</td>
+        <td align='center'>2.1</td>
     </tr>
     <tr>
         <td><b>xU-NetFullSharp</b></td>
-        <td><b>3</b></td>
-        <td><b>2.4</b></td>
-        <td><b>1</b></td>
-        <td><b>1.6</b></td>
-        <td><b>2.3</b></td>
+        <td align='center'><b>3</b></td>
+        <td align='center'><b>2.4</b></td>
+        <td align='center'><b>1</b></td>
+        <td align='center'><b>1.6</b></td>
+        <td align='center'><b>2.3</b></td>
     </tr>
 </table>
 
