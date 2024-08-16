@@ -91,71 +91,71 @@
 ### Experts' rating of the results on the external VinDr-CXR dataset
 <table>
     <tr>
-        <td><b>Models</b></td>
-        <td><b>Average rating</b><br>(best = 1)</td>
-        <td><b>Expert’s comment</b></td>
+        <td align='center'><b>Models</b></td>
+        <td align='center'><b>Average rating</b><br>(best = 1)</td>
+        <td align='center'><b>Expert’s comment</b></td>
         <td></td>
     </tr>
     <tr>
         <td><b>U-Net</b></td>
-        <td>3.0</td>
+        <td align='center'>3.0</td>
         <td></td>
         <td rowspan=8>Our models</td>
     </tr>
     <tr>
         <td><b>Attention U-Net</b></td>
-        <td>2.8</td>
+        <td align='center'>2.8</td>
         <td></td>
     </tr>
     <tr>
         <td><b>U-Net++</b></td>
-        <td>3.0</td>
+        <td align='center'>3.0</td>
         <td></td>
     </tr>
     <tr>
         <td><b>Attention U-Net++</b></td>
-        <td><b>2.3</b></td>
+        <td align='center'><b>2.3</b></td>
         <td></td>
     </tr>
     <tr>
         <td><b>U-Net3+</b></td>
-        <td>2.8</td>
+        <td align='center'>2.8</td>
         <td><b>Some problems with detail retention.</b></td>
     </tr>
     <tr>
         <td><b>U-NetSharp</b></td>
-        <td><b>1.7</b></td>
+        <td align='center'><b>1.7</b></td>
         <td><b>Second best in bone shadow suppression. Great retention of details.</b></td>
     </tr>
     <tr>
         <td><b>xU-NetFullSharp</b></td>
-        <td><b>1.2</b></td>
+        <td align='center'><b>1.2</b></td>
         <td><b>Consistently the best in bone shadow suppression. Great retention of details.</b></td>
     </tr>
     <tr>
         <td><b>Attention xU-NetFullSharp</b></td>
-        <td>3.0</td>
+        <td align='center'>3.0</td>
         <td></td>
     </tr>
     <tr>
         <td><b>U-Net-ResNet-18</b></td>
-        <td>4.5</td>
+        <td align='center'>4.5</td>
         <td></td>
         <td rowspan=4>Concurrent models</td>
     </tr>
     <tr>
         <td><b>FPN-ResNet-18</b></td>
-        <td>4.3</td>
+        <td align='center'>4.3</td>
         <td><b>Major deformation of the chest silhouette in one sample!</b></td>
     </tr>
     <tr>
         <td><b>FPN-EfficientNet-B0</b></td>
-        <td>3.7</td>
+        <td align='center'>3.7</td>
         <td><b>Blurry details.</b></td>
     </tr>
     <tr>
         <td><b>Kalisz Marczyk’s Autoencoder</b></td>
-        <td>3.5</td>
+        <td align='center'>3.5</td>
         <td></td>
     </tr>
 </table>
