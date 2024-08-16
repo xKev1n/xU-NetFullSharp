@@ -100,7 +100,7 @@
         <td><b>U-Net</b></td>
         <td align='center'>3.0</td>
         <td></td>
-        <td rowspan=8>Our models</td>
+        <td rowspan=8, align='center'>Our models</td>
     </tr>
     <tr>
         <td><b>Attention U-Net</b></td>
@@ -141,7 +141,7 @@
         <td><b>U-Net-ResNet-18</b></td>
         <td align='center'>4.5</td>
         <td></td>
-        <td rowspan=4>Concurrent models</td>
+        <td rowspan=4, align='center'>Concurrent models</td>
     </tr>
     <tr>
         <td><b>FPN-ResNet-18</b></td>
