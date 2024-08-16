@@ -1,9 +1,14 @@
 ## Official repository of the paper xU-NetFullSharp: The Novel Deep Learning Architecture for Chest X-Ray Bone Shadow Suppression
 
 # Introduction
-<span align="justify">
-  In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Among those, a novel neural network architecture called xU-NetFullSharp is proposed. This network is inspired by the most modern U-NetSharp [6] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [7] and [3] designed for this task were used for comparison. Utilized models are available in the `models` folder in the cloud storage.
-</span>
+<div align="justify">
+  
+  In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Among those, a 
+  novel neural network architecture called xU-NetFullSharp is proposed. This network is inspired by the most modern U-NetSharp [6] architecture and combines different approaches to preserve as many details, as 
+  possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [7] and [3] designed for this task were used for comparison. Utilized models are available in the `models` 
+  folder in the cloud storage.
+  
+</div>
 
 # The proposed architecture
 <p align="justify">
