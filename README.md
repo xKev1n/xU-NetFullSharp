@@ -7,7 +7,7 @@
 ## Introduction
 <div align="justify">
   
-  In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Among those, a novel neural network architecture called xU-NetFullSharp is proposed. This network is inspired by the most modern U-NetSharp [6] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [7] and [3] designed for this task were used for comparison. Utilized models are available in the `models` folder in the cloud storage.
+  In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Among those, <br> a novel neural network architecture called xU-NetFullSharp is proposed. This network is inspired by the most modern U-NetSharp [6] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [7] and [3] designed for this task were used for comparison. Utilized models are available in the `models` folder in the cloud storage.
   
 </div>
 
@@ -164,11 +164,11 @@
 <table>
     <tr>
         <td align='center'><b>Models</b></td>
-        <td align='center'><b>Vessel visibility</b> 3: Clearly visible 2: Visible 1: Not visible</td>
-        <td align='center'><b>Airway visibility</b> 3: Lobar and intermediate bronchi 2: Main bronchus and rump 1: Trachea</td>
-        <td align='center'><b>Bone shadow suppression</b> 3: Nearly perfect 2: Less than 5 unsuppressed bones 1: 5 or more unsuppressed bones</td>
-        <td align='center'><b>Overall bone shadow suppression performance</b> 1: Excellent 3: Average 5: Poor</td>
-        <td align='center'><b>Nodule visibility</b> 3: More apparent 2: Equally as apparent 1: Less apparent</td>
+        <td align='center'><b>Vessel visibility</b> <br> 3: Clearly visible <br> 2: Visible <br> 1: Not visible</td>
+        <td align='center'><b>Airway visibility</b> <br> 3: Lobar and intermediate bronchi <br> 2: Main bronchus and rump <br> 1: Trachea</td>
+        <td align='center'><b>Bone shadow suppression</b> <br> 3: Nearly perfect <br> 2: Less than 5 unsuppressed bones <br> 1: 5 or more unsuppressed bones</td>
+        <td align='center'><b>Overall bone shadow suppression performance</b> <br> 1: Excellent <br> 3: Average <br> 5: Poor</td>
+        <td align='center'><b>Nodule visibility</b> <br> 3: More apparent <br> 2: Equally as apparent <br> 1: Less apparent</td>
     </tr>
     <tr>
         <td><b>DES (Reference)</b></td>
