@@ -11,9 +11,12 @@
 </div>
 
 # The proposed architecture
-<p align="justify">
-  The xU-NetFullSharp is based on the most recent U-NetSharp [6] architecture and utilizes bidirectional multi-scale skip connections like in the preceding U-Net3+ [2]. The ReLU activation is changed for more modern xUnit [4] activation to ensure more relevant activation maps.
-</p>
+<div align="justify">
+  
+  The xU-NetFullSharp is based on the most recent U-NetSharp [6] architecture and utilizes bidirectional multi-scale skip connections like in the preceding U-Net3+ [2]. The ReLU activation is changed for more 
+  modern xUnit [4] activation to ensure more relevant activation maps.
+
+</div>
 
 <p align="center">
   <img src="https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/xU-NetFS_EN.svg?raw=true" alt>
@@ -22,9 +25,11 @@
   <em>The architecture of the proposed xU-NetFullSharp</em>
 </p>
 
-<p align="justify">
+<div align="justify">
+  
   Blocks of the proposed architecture are made up of 2D convolutions with different dilation rates and xUnit [4] activation functions.
-</p>
+  
+</div>
 
 <p align="center">
   <img src="https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/DilatedBlockEN.svg?raw=true" alt>
@@ -35,20 +40,24 @@
 
 # Datasets
 <div align="justify">
+  
   The experiments utilized three datasets – extensively augmented JSRT, VinDr-CXR [5], and Gusarev DES [1] dataset. The JSRT as well as the VinDr-CXR datasets are available in the `datasets` folder in the [cloud
   storage](https://drive.google.com/file/d/1f0LP05jhNPI0UjqkQhpAyBbp8KV_2y4Y/view?usp=drive_link). The Gusarev DES dataset can be obtained from the following [GitHub repository](https://github.com/diaoquesang/A-  
   detailed-summarization-about-bone-suppression-in-Chest-X-rays). Firstly, the JSRT dataset containing bone shadow-suppressed CXRs was split into training, validation, and testing sets and was extensively augmented 
   to achieve a sufficient amount of usable images and to ensure the model’s robustness (both original and augmented images are available in the `JSRT` subfolder).
   The second, VinDr-CXR, dataset was augmented by randomly applying inversion and used for independent testing (the used testing set is available in the `VinDrCXR` subfolder). From the third, Gusarev DES, dataset
   expert pulmonologists selected images where the rib shadows collide with pulmonary nodules. These images were then used to conduct a performance assessment focused on clinical applications of the models.
+  
 </div>
 
 # Results
-<p align="justify">
+<div align="justify">
+  
   The internal testing results (on the JSRT dataset) are available in the `internal_test` folder; external testing results (on the VinDr-CXR dataset) are present in the `external_test` folder.
   To reproduce the results, use the `test.py` file with the desired model and path to corresponding weights. Sample outputs from individual models can be seen in the `/images/xray` folder of this repository. The
   objective and subjective results we achieved on the individual datasets can be seen in the tables below.
-</p>
+
+</div>
 
 # Objective results (JSRT dataset)
 | **Models**                         | **MAE**    | **MSE**    | **SSIM**   | **MS-SSIM** | **UIQI**   | **PSNR [dB]** |
@@ -69,8 +78,8 @@
 | **DeBoNet**                        | 0.0159     | 0.0022     | 0.9312     | 0.9642      | 0.9953     | 27.0403       |
 
 # Histogram comparison
-| **Models**                         | **Correlation** | **Intersection** | **𝜒<sup>2</sup>** | **Bhattacharyya** |
-| ---------------------------------- | :-------------: | :--------------: | :---------------: | "---------------: |
+| **Models**                         | **Correlation** | **Intersection** | **𝜒<sup>2</sup>**  | **Bhattacharyya** |
+| ---------------------------------- | :-------------: | :--------------: | :---------------:  | "---------------: |
 | **U-Net**                          | 0.9443          | 9.8999           | 6.1702             | 0.1292            |
 | **Attention U-Net**                | 0.9449          | 9.8873           | 8.3925             | 0.1295            |
 | **Deep Residual U-Net**            | 0.9358          | 9.5917           | 5.8152             | 0.1478            |
@@ -87,7 +96,7 @@
 | **DeBoNet**                        | 0.9273          | 9.6682           | 11.0798            | 0.1418            |
 
 # Experts' rating of the results on the external VinDr-CXR dataset
-| **Models**                            | **Average rating**(best = 1)   | **Expert’s comment**                                                              |                   |
+| **Models**                            | **Average rating** (best = 1)   | **Expert’s comment**                                                              |                   |
 | ------------------------------------- | :----------------------------: | --------------------------------------------------------------------------------- | ----------------- |
 | **U-Net**                             | 3.0                            |                                                                                   |                   |
 | **Attention** **U-Net**               | 2.8                            |                                                                                   |                   |
@@ -124,32 +133,46 @@
 
 # References
 <p align="justify">
+  
   [1] M. Gusarev, R. Kuleev, A. Khan, A. Ramirez Rivera, and A. M. Khattak, “Deep learning models for bone suppression in chest radiographs,” in 2017 IEEE Conference on Computational Intelligence in Bioinformatics
   and Computational Biology (CIBCB), 2017, pp. 1–7. doi: 10.1109/CIBCB.2017.8058543.
+  
 </p>
 
 <p align="justify">
+  
   [2] H. Huang et al., ‘UNet 3+: A Full-Scale Connected UNet for Medical Image Segmentation’, in ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2020, pp. 1055–
   1059. doi: 10.1109/ICASSP40776.2020.9053405.
+  
 </p>
 
 <p align="justify">
+  
   [3]	S. Kalisz and M. Marczyk, ‘Autoencoder-based bone removal algorithm from x-ray images of the lung’, in 2021 IEEE 21st International Conference on Bioinformatics and Bioengineering (BIBE), 2021, pp. 1–6.
+  
 </p>
 
 <p align="justify">
+  
   [4] I. Kligvasser, T. R. Shaham, and T. Michaeli, ‘xUnit: Learning a Spatial Activation Function for Efficient Image  Restoration’, CoRR, vol. abs/1711.06445, 2017, [Online]. Available: 
   http://arxiv.org/abs/1711.06445
+  
 </p>
 
 <p align="justify">
+  
   [5]	H. Q. Nguyen et al., ‘VinDr-CXR: An open dataset of chest X-rays with radiologist’s annotations’, 2022.
+  
 </p>
 
 <p align="justify">
+  
   [6]	L. Qian, X. Zhou, Y. Li, and Z. Hu, ‘UNet#: A UNet-like Redesigning Skip Connections for Medical Image Segmentation’, arXiv preprint arXiv:2205.11759, 2022.
+  
 </p>
 
 <p align="justify">
+  
   [7]	S. Rajaraman, G. Cohen, L. Spear, L. Folio, and S. Antani, ‘DeBoNet: A deep bone suppression model ensemble to improve disease detection in chest radiographs’, PLoS One, vol. 17, no. 3, p. e0265691, 2022.
+  
 </p>
