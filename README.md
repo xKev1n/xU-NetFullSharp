@@ -89,20 +89,86 @@
 | **DeBoNet**                        | 0.9273          | 9.6682           | 11.0798           | 0.1418           |
 
 ### Experts' rating of the results on the external VinDr-CXR dataset
-| **Models**                            | **Average rating**\<br>(best = 1)  | **Expert’s comment**                                                              |                   |
-| ------------------------------------- | :----------------------------: | --------------------------------------------------------------------------------- | ----------------- |
-| **U-Net**                             | 3.0                            |                                                                                   |                   |
-| **Attention** **U-Net**               | 2.8                            |                                                                                   |                   |
-| **U-Net++**                           | 3.0                            |                                                                                   |                   |
-| **Attention** **U-Net++**             | **2.3**                        |                                                                                   |                   |
-| **U-Net3+**                           | 2.8                            | **Some problems with detail retention**                                           |                   |
-| **U-NetSharp**                        | **1.7**                        | **Second best in bone shadow suppression. Great retention of details.**           |                   |
-| **xU-NetFullSharp**                   | **1.2**                        | **Consistently the best in bone shadow suppression. Great retention of details.** |                   |
-| **Attention** **xU-NetFullSharp**     | 3.0                            |                                                                                   |                   |
-| **U-Net-ResNet-18**                   | 4.5                            |                                                                                   | Concurrent models |
-| **FPN-ResNet-18**                     | 4.3                            | **Major deformation of the chest silhouette in one sample!**                      |                   |
-| **FPN-EfficientNet-B0**               | 3.7                            | **Blurry details**                                                                |                   |
-| **Kalisz Marczyk’s Autoencoder**      | 3.5                            |                                                                                   |                   |
+<table>
+    <tr>
+        <td>**Models**</td>
+        <td>**Average rating**\(best = 1)</td>
+        <td>**Expert’s comment**</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**U-Net**</td>
+        <td>3.0</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**Attention** **U-Net**</td>
+        <td>2.8</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**U-Net++**</td>
+        <td>3.0</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**Attention** **U-Net++**</td>
+        <td>**2.3**</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**U-Net3+**</td>
+        <td>2.8</td>
+        <td>**Some problems with detail retention**</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**U-NetSharp**</td>
+        <td>**1.7**</td>
+        <td>**Second best in bone shadow suppression. Great retention of details.**</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**xU-NetFullSharp**</td>
+        <td>**1.2**</td>
+        <td>**Consistently the best in bone shadow suppression. Great retention of details.**</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**Attention** **xU-NetFullSharp**</td>
+        <td>3.0</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**U-Net-ResNet-18**</td>
+        <td>4.5</td>
+        <td></td>
+        <td rowspan=4>Concurrent models</td>
+    </tr>
+    <tr>
+        <td>**FPN-ResNet-18**</td>
+        <td>4.3</td>
+        <td>**Major deformation of the chest silhouette in one sample!**</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**FPN-EfficientNet-B0**</td>
+        <td>3.7</td>
+        <td>**Blurry details**</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>**Kalisz Marczyk’s Autoencoder**</td>
+        <td>3.5</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 
 ### Experts' rating of the results on the external Gusarev DES dataset
 | **Models**                                     | **Vessel visibility**                                                    | **Airway visibility**                                                                 | **Bone shadow suppression**       | **Overall bone shadow suppression performance**            | **Nodule visibility** |
