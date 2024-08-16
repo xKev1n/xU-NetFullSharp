@@ -7,14 +7,14 @@
 ## Introduction
 <div align="justify">
   
-  In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Among those, <br> a novel neural network architecture called xU-NetFullSharp is proposed. This network is inspired by the most modern U-NetSharp [6] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [7] and [3] designed for this task were used for comparison. Utilized models are available in the `models` folder in the cloud storage.
+  In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Multiple deep learning-based CNN architectures were implemented to fulfill this task. Among those, a novel neural network architecture called xU-NetFullSharp was proposed. This network is inspired by the most modern U-NetSharp [6] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [7] and [3] designed for this task were used for comparison. Code for the utilized models is available in the `models` folder in this repository. The weights for each model along with the used datasets can be obtained from the following [cloud storage](https://drive.google.com/file/d/1f0LP05jhNPI0UjqkQhpAyBbp8KV_2y4Y/view?usp=drive_link).
   
 </div>
 
 ## The proposed architecture
 <div align="justify">
   
-  The xU-NetFullSharp is based on the most recent U-NetSharp [6] architecture and utilizes bidirectional multi-scale skip connections like in the preceding U-Net3+ [2]. The ReLU activation is changed for more modern xUnit [4] activation to ensure more relevant activation maps.
+  The xU-NetFullSharp is based on the most recent U-NetSharp [6] architecture and utilizes bidirectional multi-scale skip connections like in the preceding U-Net3+ [2]. The ReLU activation is changed for more modern xUnit [4] activation to ensure more accurate activation maps.
 
 </div>
 
@@ -35,7 +35,7 @@
   <img src="https://github.com/xKev1n/xU-NetFullSharp/blob/main/images/models/DilatedBlockEN.svg?raw=true" alt>
 </div>
 <div align="center">
-  <em>The structure of dilated blocks</em>
+  <em>The structure of dilated blocks, where BB denotes the base block consisting of a 2D convolution with growing dilation rate <i>d</i></em>
 </div>
 
 ## Datasets
