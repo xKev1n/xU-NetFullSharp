@@ -99,8 +99,8 @@
     <tr>
         <td><b>U-Net</b></td>
         <td>3.0</td>
-        <td rowspan=8>Our models</td>
         <td></td>
+        <td rowspan=8>Our models</td>
     </tr>
     <tr>
         <td><b>Attention U-Net</b></td>
@@ -140,6 +140,7 @@
     <tr>
         <td><b>U-Net-ResNet-18</b></td>
         <td>4.5</td>
+        <td></td>
         <td rowspan=4>Concurrent models</td>
     </tr>
     <tr>
@@ -155,6 +156,7 @@
     <tr>
         <td><b>Kalisz Marczyk’s Autoencoder</b></td>
         <td>3.5</td>
+        <td></td>
     </tr>
 </table>
 
