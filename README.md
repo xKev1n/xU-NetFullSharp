@@ -1,10 +1,10 @@
 <div align="justify">
 
-  ## Official repository of the paper xU-NetFullSharp: The Novel Deep Learning Architecture for Chest X-Ray Bone Shadow Suppression
+  # Official repository of the paper xU-NetFullSharp: The Novel Deep Learning Architecture for Chest X-Ray Bone Shadow Suppression
 
 </div>
   
-# Introduction
+## Introduction
 <div align="justify">
   
   In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Among those, a 
@@ -14,7 +14,7 @@
   
 </div>
 
-# The proposed architecture
+## The proposed architecture
 <div align="justify">
   
   The xU-NetFullSharp is based on the most recent U-NetSharp [6] architecture and utilizes bidirectional multi-scale skip connections like in the preceding U-Net3+ [2]. The ReLU activation is changed for more 
@@ -42,7 +42,7 @@
   <em>The structure of dilated blocks</em>
 </p>
 
-# Datasets
+## Datasets
 <div align="justify">
   
   The experiments utilized three datasets – extensively augmented JSRT, VinDr-CXR [5], and Gusarev DES [1] dataset. The JSRT as well as the VinDr-CXR datasets are available in the `datasets` folder in the [cloud
@@ -54,7 +54,7 @@
   
 </div>
 
-# Results
+## Results
 <div align="justify">
   
   The internal testing results (on the JSRT dataset) are available in the `internal_test` folder; external testing results (on the VinDr-CXR dataset) are present in the `external_test` folder.
@@ -63,7 +63,7 @@
 
 </div>
 
-# Objective results (JSRT dataset)
+### Objective results (JSRT dataset)
 | **Models**                         | **MAE**    | **MSE**    | **SSIM**   | **MS-SSIM** | **UIQI**   | **PSNR [dB]** |
 | ---------------------------------- | :--------: | :--------: | :--------: | :---------: | :--------: | :-----------: |
 | **U-Net**                          | 0.0074     | 0.0004     | 0.9835     | 0.9865      | 0.9959     | 34.6081       |
@@ -81,7 +81,7 @@
 | **U-Net-ResNet-18**                | 0.0172     | 0.0008     | 0.9660     | 0.9713      | 0.9904     | 30.7114       |
 | **DeBoNet**                        | 0.0159     | 0.0022     | 0.9312     | 0.9642      | 0.9953     | 27.0403       |
 
-# Histogram comparison
+### Histogram comparison
 | **Models**                         | **Correlation** | **Intersection** | **𝜒<sup>2</sup>** | **Bhattacharyya** |
 | ---------------------------------- | :-------------: | :--------------: | :---------------:  | "--------------: |
 | **U-Net**                          | 0.9443          | 9.8999           | 6.1702             | 0.1292           |
@@ -99,7 +99,7 @@
 | **U-Net-ResNet-18**                | 0.8843          | 9.0170           | 26.0124            | 0.1973           |
 | **DeBoNet**                        | 0.9273          | 9.6682           | 11.0798            | 0.1418           |
 
-# Experts' rating of the results on the external VinDr-CXR dataset
+### Experts' rating of the results on the external VinDr-CXR dataset
 | **Models**                            | **Average rating** (best = 1)  | **Expert’s comment**                                                              |                   |
 | ------------------------------------- | :----------------------------: | --------------------------------------------------------------------------------- | ----------------- |
 | **U-Net**                             | 3.0                            |                                                                                   |                   |
@@ -115,7 +115,7 @@
 | **FPN-EfficientNet-B0**               | 3.7                            | **Blurry details**                                                                |                   |
 | **Kalisz Marczyk’s Autoencoder**      | 3.5                            |                                                                                   |                   |
 
-# Experts' rating of the results on the external Gusarev DES dataset
+### Experts' rating of the results on the external Gusarev DES dataset
 | **Models**                                     | **Vessel visibility**                                                    | **Airway visibility**                                                                 | **Bone shadow suppression**       | **Overall bone shadow suppression performance**            | **Nodule visibility** |
 | ---------------------------------------------- | :----------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :-------------------------------: | :--------------------------------------------------------: | :-------------------: |
 | | 3: Clearly visible 2: Visible 1: Not visible 	 						| 3: Lobar and intermediate bronchi 2: Main bronchus and rump 1: Trachea 				| 3: Nearly perfect 2: Less than 5 unsuppressed bones 1: 5 or more unsuppressed bones 	| 1: Excellent 3: Average 5: Poor 	| 3: More apparent 2: Equally as apparent 1: Less apparent 	 |
@@ -135,7 +135,7 @@
 | **U-Net++**                                    | **3**                                                                    | **2.4**                                                                               | **1**                             | 2.2                                                        | 2.1                   |
 | **xU-NetFullSharp**                            | **3**                                                                    | **2.4**                                                                               | **1**                             | **1.6**                                                    | **2.3**               |
 
-# References
+## References
 <p align="justify">
   
   [1] M. Gusarev, R. Kuleev, A. Khan, A. Ramirez Rivera, and A. M. Khattak, ‘Deep learning models for bone suppression in chest radiographs’, in 2017 IEEE Conference on Computational Intelligence in Bioinformatics
