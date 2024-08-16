@@ -94,22 +94,28 @@
         <td><b>Models</b></td>
         <td><b>Average rating</b><br>(best = 1)</td>
         <td><b>Expert’s comment</b></td>
+        <td></td>
     </tr>
     <tr>
         <td><b>U-Net</b></td>
         <td>3.0</td>
+        <td rowspan=8>Our models</td>
+        <td></td>
     </tr>
     <tr>
         <td><b>Attention U-Net</b></td>
         <td>2.8</td>
+        <td></td>
     </tr>
     <tr>
         <td><b>U-Net++</b></td>
         <td>3.0</td>
+        <td></td>
     </tr>
     <tr>
         <td><b>Attention U-Net++</b></td>
         <td><b>2.3</b></td>
+        <td></td>
     </tr>
     <tr>
         <td><b>U-Net3+</b></td>
@@ -129,6 +135,7 @@
     <tr>
         <td><b>Attention xU-NetFullSharp</b></td>
         <td>3.0</td>
+        <td></td>
     </tr>
     <tr>
         <td><b>U-Net-ResNet-18</b></td>
