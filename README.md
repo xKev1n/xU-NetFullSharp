@@ -27,7 +27,7 @@
 
 <div align="justify">
   
-  Blocks of the proposed architecture are made up of 2D convolutions with different dilation rates and xUnit [4] activation functions.
+  <br> Blocks of the proposed architecture are made up of 2D convolutions with different dilation rates and xUnit [4] activation functions.
   
 </div>
 
