@@ -1,5 +1,9 @@
-## Official repository of the paper xU-NetFullSharp: The Novel Deep Learning Architecture for Chest X-Ray Bone Shadow Suppression
+<div align="justify">
 
+  ## Official repository of the paper xU-NetFullSharp: The Novel Deep Learning Architecture for Chest X-Ray Bone Shadow Suppression
+
+</div>
+  
 # Introduction
 <div align="justify">
   
@@ -78,25 +82,25 @@
 | **DeBoNet**                        | 0.0159     | 0.0022     | 0.9312     | 0.9642      | 0.9953     | 27.0403       |
 
 # Histogram comparison
-| **Models**                         | **Correlation** | **Intersection** | **𝜒<sup>2</sup>**  | **Bhattacharyya** |
-| ---------------------------------- | :-------------: | :--------------: | :---------------:  | "---------------: |
-| **U-Net**                          | 0.9443          | 9.8999           | 6.1702             | 0.1292            |
-| **Attention U-Net**                | 0.9449          | 9.8873           | 8.3925             | 0.1295            |
-| **Deep Residual U-Net**            | 0.9358          | 9.5917           | 5.8152             | 0.1478            |
-| **U-Net++**                        | 0.9394          | 9.8962           | **4.8495**         | 0.1309            |
-| **Attention U-Net++**              | 0.9478          | 9.9733           | 12.5015            | 0.1202            |
-| **U-Net3+**                        | 0.9329          | 9.9043           | 8.3654             | 0.1251            |
-| **U-NetSharp**                     | 0.9414          | 9.9133           | 14.6634            | 0.1330            |
-| **Attention xU-NetFullSharp**      | 0.9321          | 9.8601           | 8.9438             | 0.1396            |
-| **xU-NetFullSharp**                | **0.9631**      | **10.0285**      | 7.0048             | **0.1155**        |
-| **Kalisz Marczyk’s Autoencoder**   | 0.9580          | 9.8830           | 6.7579             | 0.1220            |
-| **FPN-ResNet-18**                  | 0.8658          | 9.1395           | 5.1873             | 0.1976            |
-| **FPN-EfficientNet-B0**            | 0.8763          | 9.3075           | 12.9367            | 0.1831            |
-| **U-Net-ResNet-18**                | 0.8843          | 9.0170           | 26.0124            | 0.1973            |
-| **DeBoNet**                        | 0.9273          | 9.6682           | 11.0798            | 0.1418            |
+| **Models**                         | **Correlation** | **Intersection** | **𝜒<sup>2</sup>** | **Bhattacharyya** |
+| ---------------------------------- | :-------------: | :--------------: | :---------------:  | "--------------: |
+| **U-Net**                          | 0.9443          | 9.8999           | 6.1702             | 0.1292           |
+| **Attention U-Net**                | 0.9449          | 9.8873           | 8.3925             | 0.1295           |
+| **Deep Residual U-Net**            | 0.9358          | 9.5917           | 5.8152             | 0.1478           |
+| **U-Net++**                        | 0.9394          | 9.8962           | **4.8495**         | 0.1309           |
+| **Attention U-Net++**              | 0.9478          | 9.9733           | 12.5015            | 0.1202           |
+| **U-Net3+**                        | 0.9329          | 9.9043           | 8.3654             | 0.1251           |
+| **U-NetSharp**                     | 0.9414          | 9.9133           | 14.6634            | 0.1330           |
+| **Attention xU-NetFullSharp**      | 0.9321          | 9.8601           | 8.9438             | 0.1396           |
+| **xU-NetFullSharp**                | **0.9631**      | **10.0285**      | 7.0048             | **0.1155**       |
+| **Kalisz Marczyk’s Autoencoder**   | 0.9580          | 9.8830           | 6.7579             | 0.1220           |
+| **FPN-ResNet-18**                  | 0.8658          | 9.1395           | 5.1873             | 0.1976           |
+| **FPN-EfficientNet-B0**            | 0.8763          | 9.3075           | 12.9367            | 0.1831           |
+| **U-Net-ResNet-18**                | 0.8843          | 9.0170           | 26.0124            | 0.1973           |
+| **DeBoNet**                        | 0.9273          | 9.6682           | 11.0798            | 0.1418           |
 
 # Experts' rating of the results on the external VinDr-CXR dataset
-| **Models**                            | **Average rating** (best = 1)   | **Expert’s comment**                                                              |                   |
+| **Models**                            | **Average rating** (best = 1)  | **Expert’s comment**                                                              |                   |
 | ------------------------------------- | :----------------------------: | --------------------------------------------------------------------------------- | ----------------- |
 | **U-Net**                             | 3.0                            |                                                                                   |                   |
 | **Attention** **U-Net**               | 2.8                            |                                                                                   |                   |
@@ -134,7 +138,7 @@
 # References
 <p align="justify">
   
-  [1] M. Gusarev, R. Kuleev, A. Khan, A. Ramirez Rivera, and A. M. Khattak, “Deep learning models for bone suppression in chest radiographs,” in 2017 IEEE Conference on Computational Intelligence in Bioinformatics
+  [1] M. Gusarev, R. Kuleev, A. Khan, A. Ramirez Rivera, and A. M. Khattak, ‘Deep learning models for bone suppression in chest radiographs’, in 2017 IEEE Conference on Computational Intelligence in Bioinformatics
   and Computational Biology (CIBCB), 2017, pp. 1–7. doi: 10.1109/CIBCB.2017.8058543.
   
 </p>
