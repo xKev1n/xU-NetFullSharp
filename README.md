@@ -161,24 +161,136 @@
 </table>
 
 ### Experts' rating of the results on the external Gusarev DES dataset
-| **Models**                                     | <b>Vessel visibility</b> <br> 3: Clearly visible <br> 2: Visible <br> 1: Not visible                                                   | **Airway visibility**  <br> 3: Lobar and intermediate bronchi <br> 2: Main bronchus and rump <br> 1: Trachea                                                               | **Bone shadow suppression** <br> 3: Nearly perfect <br> 2: Less than 5 unsuppressed bones <br> 1: 5 or more unsuppressed bones      | **Overall bone shadow suppression performance** <br> 1: Excellent <br> 3: Average <br> 5: Poor           | **Nodule visibility** <br> 3: More apparent <br> 2: Equally as apparent <br> 1: Less apparent |
-| ---------------------------------------------- | :----------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: | :-------------------------------: | :--------------------------------------------------------: | :-------------------: |
-| **DES (Reference)**                            | **3**                                                                    | **1.8**                                                                               | **2.7**                           | **1.3**                                                    | **2.9**               |
-| **Attention U-Net**                            | **3**                                                                    | 2.1                                                                                   | **1**                             | 2.8                                                        | **2.3**               |
-| **Attention U-Net++**                          | **3**                                                                    | 2.2                                                                                   | **1**                             | 2.3                                                        | 2.1                   |
-| **Attention xU-NetFullSharp**                  | **3**                                                                    | 2.3                                                                                   | **1**                             | 2.4                                                        | 2                     |
-| **DeBoNet**                                    | **2**                                                                    | 1.8                                                                                   | **1**                             | 4.2                                                        | 1.4                   |
-| **FPN-EfficientNet-B0**                        | **3**                                                                    | 2.2                                                                                   | **1**                             | 3.3                                                        | 1.5                   |
-| **FPN-ResNet-18**                              | **3**                                                                    | 2.3                                                                                   | **1**                             | 3.5                                                        | 2                     |
-| **U-Net-ResNet-18**                            | **3**                                                                    | 2.3                                                                                   | **1**                             | 4.9                                                        | 2.1                   |
-| **Deep Residual U-Net**                        | 2.2                                                                      | 2                                                                                     | **1**                             | 5                                                          | 1.9                   |
-| **Kalisz Marczyk’s Autoencoder**               | **3**                                                                    | 2.3                                                                                   | **1**                             | 3.1                                                        | 2.1                   |
-| **U-Net**                                      | **3**                                                                    | 2.3                                                                                   | **1**                             | 2.6                                                        | 2.2                   |
-| **U-NetSharp**                                 | **3**                                                                    | **2.4**                                                                               | **1**                             | 2.1                                                        | 2.2                   |
-| **U-Net3+**                                    | **3**                                                                    | **2.4**                                                                               | **1**                             | 2.5                                                        | 2.2                   |
-| **U-Net++**                                    | **3**                                                                    | **2.4**                                                                               | **1**                             | 2.2                                                        | 2.1                   |
-| **xU-NetFullSharp**                            | **3**                                                                    | **2.4**                                                                               | **1**                             | **1.6**                                                    | **2.3**               |
-
+<table>
+    <tr>
+        <td>**Models**</td>
+        <td>&lt;b&gt;Vessel visibility&lt;/b&gt; &lt;br&gt; 3: Clearly visible &lt;br&gt; 2: Visible &lt;br&gt; 1: Not visible</td>
+        <td>**Airway visibility**  &lt;br&gt; 3: Lobar and intermediate bronchi &lt;br&gt; 2: Main bronchus and rump &lt;br&gt; 1: Trachea</td>
+        <td>**Bone shadow suppression** &lt;br&gt; 3: Nearly perfect &lt;br&gt; 2: Less than 5 unsuppressed bones &lt;br&gt; 1: 5 or more unsuppressed bones</td>
+        <td>**Overall bone shadow suppression performance** &lt;br&gt; 1: Excellent &lt;br&gt; 3: Average &lt;br&gt; 5: Poor</td>
+        <td>**Nodule visibility** &lt;br&gt; 3: More apparent &lt;br&gt; 2: Equally as apparent &lt;br&gt; 1: Less apparent</td>
+    </tr>
+    <tr>
+        <td>**DES (Reference)**</td>
+        <td>**3**</td>
+        <td>**1.8**</td>
+        <td>**2.7**</td>
+        <td>**1.3**</td>
+        <td>**2.9**</td>
+    </tr>
+    <tr>
+        <td>**Attention U-Net**</td>
+        <td>**3**</td>
+        <td>2.1</td>
+        <td>**1**</td>
+        <td>2.8</td>
+        <td>**2.3**</td>
+    </tr>
+    <tr>
+        <td>**Attention U-Net++**</td>
+        <td>**3**</td>
+        <td>2.2</td>
+        <td>**1**</td>
+        <td>2.3</td>
+        <td>2.1</td>
+    </tr>
+    <tr>
+        <td>**Attention xU-NetFullSharp**</td>
+        <td>**3**</td>
+        <td>2.3</td>
+        <td>**1**</td>
+        <td>2.4</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>**DeBoNet**</td>
+        <td>**2**</td>
+        <td>1.8</td>
+        <td>**1**</td>
+        <td>4.2</td>
+        <td>1.4</td>
+    </tr>
+    <tr>
+        <td>**FPN-EfficientNet-B0**</td>
+        <td>**3**</td>
+        <td>2.2</td>
+        <td>**1**</td>
+        <td>3.3</td>
+        <td>1.5</td>
+    </tr>
+    <tr>
+        <td>**FPN-ResNet-18**</td>
+        <td>**3**</td>
+        <td>2.3</td>
+        <td>**1**</td>
+        <td>3.5</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>**U-Net-ResNet-18**</td>
+        <td>**3**</td>
+        <td>2.3</td>
+        <td>**1**</td>
+        <td>4.9</td>
+        <td>2.1</td>
+    </tr>
+    <tr>
+        <td>**Deep Residual U-Net**</td>
+        <td>2.2</td>
+        <td>2</td>
+        <td>**1**</td>
+        <td>5</td>
+        <td>1.9</td>
+    </tr>
+    <tr>
+        <td>**Kalisz Marczyk’s Autoencoder**</td>
+        <td>**3**</td>
+        <td>2.3</td>
+        <td>**1**</td>
+        <td>3.1</td>
+        <td>2.1</td>
+    </tr>
+    <tr>
+        <td>**U-Net**</td>
+        <td>**3**</td>
+        <td>2.3</td>
+        <td>**1**</td>
+        <td>2.6</td>
+        <td>2.2</td>
+    </tr>
+    <tr>
+        <td>**U-NetSharp**</td>
+        <td>**3**</td>
+        <td>**2.4**</td>
+        <td>**1**</td>
+        <td>2.1</td>
+        <td>2.2</td>
+    </tr>
+    <tr>
+        <td>**U-Net3+**</td>
+        <td>**3**</td>
+        <td>**2.4**</td>
+        <td>**1**</td>
+        <td>2.5</td>
+        <td>2.2</td>
+    </tr>
+    <tr>
+        <td>**U-Net++**</td>
+        <td>**3**</td>
+        <td>**2.4**</td>
+        <td>**1**</td>
+        <td>2.2</td>
+        <td>2.1</td>
+    </tr>
+    <tr>
+        <td>**xU-NetFullSharp**</td>
+        <td>**3**</td>
+        <td>**2.4**</td>
+        <td>**1**</td>
+        <td>**1.6**</td>
+        <td>**2.3**</td>
+    </tr>
+</table>
 ## References
 <div align="justify">
   
