@@ -204,7 +204,7 @@
     </tr>
     <tr>
         <td><b>DeBoNet</b></td>
-        <td align='center'><b>2</b></td>
+        <td align='center'>2</td>
         <td align='center'>1.8</td>
         <td align='center'><b>1</b></td>
         <td align='center'>4.2</td>
