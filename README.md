@@ -8,10 +8,24 @@
 <div align="justify">
   
   In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Multiple deep learning-based CNN architectures were implemented to fulfill this task. Among those, a novel neural network architecture called xU-NetFullSharp was proposed. This network is inspired by the most modern U-NetSharp [6] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [7] and [3] designed for this task were used for comparison. Code for the utilized models is available in the `models` folder in this repository. The weights for each model along with the used datasets can be obtained from the following [cloud storage](https://drive.google.com/file/d/1f0LP05jhNPI0UjqkQhpAyBbp8KV_2y4Y/view?usp=drive_link).
+
+<div align="center">
+  <img src="images/intro.png" alt>
+</div>
   
 </div>
 
-## The proposed architecture
+## Quick Start Python Code
+<pre>
+<code>
+# CODE EXAMPLE IS UNDER CONSTRUCTION
+</code>
+</pre>
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Details about proposed architecture
 <div align="justify">
   
   The xU-NetFullSharp is based on the most recent U-NetSharp [6] architecture and utilizes bidirectional multi-scale skip connections like in the preceding U-Net3+ [2]. The ReLU activation is changed for more modern xUnit [4] activation to ensure more accurate activation maps.
