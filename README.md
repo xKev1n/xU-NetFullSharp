@@ -25,6 +25,31 @@
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## How to Cite
+<pre>
+Schiller, V., Burget, R., Genzor, S., Mizera, J., & Mezina, A. (2025). xU-NetFullSharp: The Novel Deep 
+Learning Architecture for Chest X-ray Bone Shadow Suppression. Biomedical Signal Processing and Control,
+100, 106983. https://doi.org/10.1016/j.bspc.2024.106983.
+</pre>
+
+<pre>
+<code>
+@article{SCHILLER2025106983,
+title = {xU-NetFullSharp: The Novel Deep Learning Architecture for Chest X-ray Bone Shadow Suppression},
+journal = {Biomedical Signal Processing and Control},
+volume = {100},
+pages = {106983},
+year = {2025},
+issn = {1746-8094},
+doi = {https://doi.org/10.1016/j.bspc.2024.106983},
+url = {https://www.sciencedirect.com/science/article/pii/S1746809424010413},
+author = {Vojtech Schiller and Radim Burget and Samuel Genzor and Jan Mizera and Anzhelika Mezina},
+keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imaging, Neural networks, Convolutional neural networks, U-Net, Image denoising},
+}
+</code>
+</pre>
+
+
 ## Details about proposed architecture
 <div align="justify">
   
