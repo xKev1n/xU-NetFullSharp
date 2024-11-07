@@ -266,7 +266,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>Attention U-Net</b></td>
         <td align='center'><b>3</b></td>
         <td align='center'>2.1</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>2.8</td>
         <td align='center'><b>2.3</b></td>
     </tr>
@@ -274,7 +274,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>Attention U-Net++<b></td>
         <td align='center'><b>3</b></td>
         <td align='center'>2.2</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>2.3</td>
         <td align='center'>2.1</td>
     </tr>
@@ -282,7 +282,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>Attention xU-NetFullSharp<b></td>
         <td align='center'><b>3</b></td>
         <td align='center'>2.3</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>2.4</td>
         <td align='center'>2</td>
     </tr>
@@ -290,7 +290,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>DeBoNet</b></td>
         <td align='center'>2</td>
         <td align='center'>1.8</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>4.2</td>
         <td align='center'>1.4</td>
     </tr>
@@ -298,7 +298,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>FPN-EfficientNet-B0<b></td>
         <td align='center'><b>3</b></td>
         <td align='center'>2.2</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>3.3</td>
         <td align='center'>1.5</td>
     </tr>
@@ -306,7 +306,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>FPN-ResNet-18<b></td>
         <td align='center'><b>3</b></td>
         <td align='center'>2.3</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>3.5</td>
         <td align='center'>2</td>
     </tr>
@@ -314,7 +314,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>U-Net-ResNet-18<b></td>
         <td align='center'><b>3</b></td>
         <td align='center'>2.3</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>4.9</td>
         <td align='center'>2.1</td>
     </tr>
@@ -322,7 +322,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>Deep Residual U-Net<b></td>
         <td align='center'>2.2</td>
         <td align='center'>2</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>5</td>
         <td align='center'>1.9</td>
     </tr>
@@ -330,7 +330,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>Kalisz Marczyk’s Autoencoder<b></td>
         <td align='center'><b>3</b></td>
         <td align='center'>2.3</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>3.1</td>
         <td align='center'>2.1</td>
     </tr>
@@ -338,7 +338,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>U-Net</b></td>
         <td align='center'><b>3</b></td>
         <td align='center'>2.3</td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>2.6</td>
         <td align='center'>2.2</td>
     </tr>
@@ -346,7 +346,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>U-NetSharp</b></td>
         <td align='center'><b>3</b></td>
         <td align='center'><b>2.4</b></td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>2.1</td>
         <td align='center'>2.2</td>
     </tr>
@@ -354,7 +354,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>U-Net3+</b></td>
         <td align='center'><b>3</b></td>
         <td align='center'><b>2.4</b></td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>2.5</td>
         <td align='center'>2.2</td>
     </tr>
@@ -362,7 +362,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>U-Net++</b></td>
         <td align='center'><b>3</b></td>
         <td align='center'><b>2.4</b></td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'>2.2</td>
         <td align='center'>2.1</td>
     </tr>
@@ -370,7 +370,7 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
         <td><b>xU-NetFullSharp</b></td>
         <td align='center'><b>3</b></td>
         <td align='center'><b>2.4</b></td>
-        <td align='center'><b>1</b></td>
+        <td align='center'>1</td>
         <td align='center'><b>1.6</b></td>
         <td align='center'><b>2.3</b></td>
     </tr>
