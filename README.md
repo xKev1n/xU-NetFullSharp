@@ -16,45 +16,56 @@ In this paper, an automated deep learning-based framework for bone shadow suppre
   
 
 ## Quick Start Python Guide
-To create working environment, you can use conda with the following command:
-<pre>
-<code>
+This guide provides an overview of setting up and testing bone suppression models using Conda and Python scripts.
+
+### Environment Setup
+
+To create the Conda environment with necessary dependencies, run:
+
+```bash
 conda env create -f environment.yml
-</code>
-</pre>
+```
 
-You can activate the conda environment by executing:
-<pre>
-<code>
+After creating the environment, activate it by executing:
+
+```bash
 conda activate bone_suppression
-</code>
-</pre>
+```
 
-You can test individual models on external datasets by executing:
-<pre>
-<code>
+### Testing Models on Datasets
+
+You can test individual models on either internal or external datasets. To do this, use the `test.py` script with the following command:
+
+```bash
 python test.py --model_name <desired_model> --test_variant <external | internal> --data_path <path_to_desired_dataset>
-</code>
-</pre>
-Supported models are currently the following: "KALISZ_AE", "UNET3P", "UNETPP", "UNET", "ATT_UNET", "ATT_UNETPP", "DEEP_RESUNET", "UNET_SHARP", "XUNETFS", "ATT_XUNETFS", "UNET_RES18", "FPN_RES18", "FPN_EF0".
+```
 
-When performing internal test, the `test.py` script expects the destination folder to have subfolders `JSRT` and `BSE_JSRT`. The `JSRT` directory contains the original X-ray images, while the `BSE_JSRT` directory contains the corresponding ground truth images.
-The external test variant extracts any images in the destination folders, preprocesses them and calls the inference.
-The outputs are saved into directory `outputs`.
+**Supported Models:**
+- `"KALISZ_AE"`, `"UNET3P"`, `"UNETPP"`, `"UNET"`, `"ATT_UNET"`, `"ATT_UNETPP"`, `"DEEP_RESUNET"`, `"UNET_SHARP"`, `"XUNETFS"`, `"ATT_XUNETFS"`, `"UNET_RES18"`, `"FPN_RES18"`, `"FPN_EF0"`
 
-For training, you can use `train.py` script in a following way:
-<pre>
-<code>
+#### Internal vs. External Testing
+
+- **Internal Testing**: 
+   - Requires the dataset folder to contain subdirectories named `JSRT` and `BSE_JSRT`.
+   - The `JSRT` folder should include the original X-ray images, while `BSE_JSRT` should contain the corresponding ground truth images.
+
+- **External Testing**:
+   - Automatically processes images in the specified folder, applies inference, and saves the output.
+   - Outputs are saved in the `outputs` directory.
+
+### Training Models
+
+To train models, use the `train.py` script:
+
+```bash
 python train.py --model_name <desired_model> --data_path <dataset_directory>
-</code>
-</pre>
-or
-<pre>
-<code>
+```
+
+If you want to initialize the model with pre-trained weights, include the `--weights_path` argument:
+
+```bash
 python train.py --model_name <desired_model> --data_path <dataset_directory> --weights_path <weights_path>
-</code>
-</pre>
-if you want to load weights before training.
+```
 
 ## Downloads
 - [Pretrained model weights](https://vutbr-my.sharepoint.com/:u:/g/personal/burgetrm_vutbr_cz/EaxYf0RZYCVClFDVpvfqdtsBL1DUV0B81pE1Hy_C1W7bOg?e=buBH8N)
