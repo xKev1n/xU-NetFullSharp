@@ -31,29 +31,31 @@ class DataGen(keras.utils.data_utils.Sequence):
         self.on_epoch_end()
     
     def __load__(self, id_name):
-        image_path = self.path+ "JSRT/" + id_name
-        val_image_path = self.path + "BSE_JSRT/" + id_name
+        image_path = os.path.join(self.path, "JSRT", id_name)
+        val_image_path = os.path.join(self.path, "BSE_JSRT", id_name)
         
         if self.RGB:
             img = cv.imread(image_path)
         else:
-            img = cv.imread(image_path,0)
+            img = cv.imread(image_path, 0)
             img = np.expand_dims(img, axis = -1)
+        
+        if (img.shape[:2] != (IMAGE_SIZE, IMAGE_SIZE)):
+            img = cv.resize(img, (IMAGE_SIZE, IMAGE_SIZE), interpolation = cv.INTER_LANCZOS4)
         
         img = img_to_array(img)
         
-        
-        val_img = cv.imread(val_image_path,0)
+        val_img = cv.imread(val_image_path, 0)
         val_img = np.expand_dims(val_img, axis = -1)
         
         if (val_img.shape != (IMAGE_SIZE, IMAGE_SIZE, 1)):
-            val_img = cv.resize(val_img, (IMAGE_SIZE, IMAGE_SIZE))
+            val_img = cv.resize(val_img, (IMAGE_SIZE, IMAGE_SIZE), interpolation=cv.INTER_LANCZOS4)
         
         val_img = img_to_array(val_img)
         
         # Normalization of the images    
-        img = img / 255.0
-        val_img = val_img / 255.0
+        img /= 255.0
+        val_img /= 255.0
 
         return img, val_img
     
@@ -84,6 +86,5 @@ class DataGen(keras.utils.data_utils.Sequence):
 
 def getIds(path):    
     ids = os.listdir(path)
-    print(len(ids))
-    ids = sorted(ids)
+    ids = sorted([file for file in ids if file.endswith(('.jpg', '.png', '.bmp')) and os.path.isfile(os.path.join(path, file))])
     return ids

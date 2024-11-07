@@ -9,11 +9,13 @@ from tensorflow.keras.callbacks import ModelCheckpoint, LearningRateScheduler, E
 from keras.callbacks import TensorBoard, ReduceLROnPlateau, EarlyStopping
 import os
 import glob
+from tqdm import tqdm
 
 # Image manipulation
 from generator import DataGen, getIds, preprocess_image
 from tensorflow.keras.utils import img_to_array
 import keras.backend as kb
+
 # Statistics
 from sewar import full_ref as fr
 import xlsxwriter
@@ -85,8 +87,6 @@ def check_capabilities():
 
     tf.test.is_built_with_cuda()
 
-    print(tf.version.VERSION)
-
     sys.version
     print(tf.__version__)
     print(keras.__version__)
@@ -96,13 +96,13 @@ def check_capabilities():
 def save_model(model, model_name):
     # serialize model to JSON
     model_json = model.to_json()
-    with open("saved_models/"+model_name, "w") as json_file:
+    with open(os.path.join('saved_models', model_name), "w") as json_file:
         json_file.write(model_json)
 
     print("Saved model to disk")
 
 def save_weights(model, file_name):
-    model.save_weights("saved_models/"+file_name)
+    model.save_weights(os.path.join('saved_models', file_name))
 
     print("Saved weights to disk")
 
@@ -110,7 +110,7 @@ def load_model(file_name):
     ## Loading the model
     # Load json and create model
 
-    json_file = open('saved_models/'+file_name, 'r')
+    json_file = open(os.path.join('saved_models', file_name), 'r')
     model_json = json_file.read()
     json_file.close()
 
@@ -127,46 +127,91 @@ def load_weights(model, file_name):
     print("Loaded weights from disk")
 
 ## INTERNAL TEST SET
-def get_test_data(RGB=False):
-    t_path = "ribs_suppresion/new/augmented/test/"
+def get_test_data(t_path, RGB=False):
 
-    test_path = t_path + "JSRT/"
+    test_path = os.path.join(t_path, 'JSRT')
 
     test_ids = getIds(test_path)
-    print(len(test_ids))
+    print(f'Number of test images: {len(test_ids)}')
 
     test_gen = DataGen(test_ids, t_path, image_size=SIZE, batch_size=BATCH_SIZE, RGB=RGB)
     return test_gen, test_ids
 
+def get_flops(model, model_inputs) -> float:
+        """
+        Calculate FLOPS [GFLOPs] for a tf.keras.Model or tf.keras.Sequential model
+        in inference mode. It uses tf.compat.v1.profiler under the hood.
+        Reference: https://github.com/wandb/wandb/blob/latest/wandb/integration/keras/keras.py#L1025-L1073
+        """
+
+        if not isinstance(
+            model, (tf.keras.models.Sequential, tf.keras.models.Model)
+        ):
+            raise ValueError(
+                "Calculating FLOPS is only supported for "
+                "`tf.keras.Model` and `tf.keras.Sequential` instances."
+            )
+
+        from tensorflow.python.framework.convert_to_constants import (
+            convert_variables_to_constants_v2_as_graph,
+        )
+
+        # Compute FLOPs for one sample
+        batch_size = 1
+        inputs = [
+            tf.TensorSpec([batch_size] + inp.shape[1:], inp.dtype)
+            for inp in model_inputs
+        ]
+
+        # convert tf.keras model into frozen graph to count FLOPs about operations used at inference
+        real_model = tf.function(model).get_concrete_function(inputs)
+        frozen_func, _ = convert_variables_to_constants_v2_as_graph(real_model)
+
+        # Calculate FLOPs with tf.profiler
+        run_meta = tf.compat.v1.RunMetadata()
+        opts = (
+            tf.compat.v1.profiler.ProfileOptionBuilder(
+                tf.compat.v1.profiler.ProfileOptionBuilder().float_operation()
+            )
+            .with_empty_output()
+            .build()
+        )
+
+        flops = tf.compat.v1.profiler.profile(
+            graph=frozen_func.graph, run_meta=run_meta, cmd="scope", options=opts
+        )
+
+        tf.compat.v1.reset_default_graph()
+
+        # convert to GFLOPs
+        return (flops.total_float_ops / 1e9)/2
+
 ## EXTERNAL TEST SET
-def get_unseen_data(random=True, RGB=False):
-    t_path = "ribs_suppresion/test_inverted/"
+def get_unseen_data(t_path, random=False, RGB=False):
 
     ids = getIds(t_path)
-    print(len(ids))
+    print(f'Number of test images: {len(ids)}')
     test_ids = []
     
     ## Return 10 random images or the whole test set
     if (random):
         for i in range(0, 10):
             num = np.random.randint(0, len(ids))
-            print(ids[num])
             test_ids.append(ids[num])
     else:
         for i in range(len(ids)):
-            print(ids[i])
             test_ids.append(ids[i])
     
     test_data = []
-    for id in test_ids:
-        data = t_path + id
+    for id in tqdm(test_ids, desc='Loading test data'):
+        data = os.path.join(t_path, id)
 
         if RGB:
             img = cv.imread(data)
             if (img.shape != (SIZE, SIZE, 3)):
-                img = cv.resize(img, (SIZE, SIZE))
+                img = cv.resize(img, (SIZE, SIZE), interpolation=cv.INTER_LANCZOS4)
         else:
-            img = cv.imread(data,0)
+            img = cv.imread(data, 0)
             img = np.expand_dims(img, axis = -1)
             if (img.shape != (SIZE, SIZE, 1)):
                 img = cv.resize(img, (SIZE, SIZE))
@@ -174,7 +219,7 @@ def get_unseen_data(random=True, RGB=False):
         img = preprocess_image(img)
         img = img_to_array(img)
         # Convert to 0--1 interval  
-        img = img / 255.0
+        img /= 255.0
         
         test_data.append(img)
     
@@ -182,28 +227,40 @@ def get_unseen_data(random=True, RGB=False):
     
     return test_data, test_ids
     
-def test_model(model):   
+def test_model(model, t_path, RGB=False, random=False):   
     ## Testing the model's predictions
     results = []
-    data, ids = get_unseen_data(random=False)
+    times = []
+    data, ids = get_unseen_data(t_path, random=random, RGB=RGB)
+    import time
+    for i in tqdm(range(0, len(data), BATCH_SIZE), desc='Performing inference'):
+        batch_data = data[i:i+BATCH_SIZE]
+        start = time.time()
+        result = model.predict(batch_data)
+        end = time.time()
+        results.extend(result)
+        times.append(end-start)
+    
+    print(f'Mean inference time for a batch of size {BATCH_SIZE}: {np.mean(times) * 1000:.2f} ms')
+    print(f'Median inference time for a batch of size {BATCH_SIZE}: {np.median(times) * 1000:.2f} ms')
+    print(f'Min inference time for a batch of size {BATCH_SIZE}: {np.min(times) * 1000:.2f} ms')
+    print(f'Max inference time for a batch of size {BATCH_SIZE}: {np.max(times) * 1000:.2f} ms')
+    print(f'Std inference time for a batch of size {BATCH_SIZE}: {np.std(times) * 1000:.2f} ms')
 
-    for i in range (len(data)//BATCH_SIZE):
-        temp = data[i*BATCH_SIZE:(i+1)*BATCH_SIZE]
-        print(temp.shape)
-        result = model.predict(temp)
-        result = np.array(result)
-        results.append(result)
     results = np.array(results)
     results = np.reshape(results, (len(data), SIZE, SIZE, 1))
+
     return results, ids
 
 def eval_results(results, ids, model_name):
-    for i in range(0, len(results)):
-        cv.imwrite("test_predictions/"+model_name+"/{}_predicted.png".format(ids[i]), results[i]*255)
+    os.makedirs(os.path.join("outputs", "external", model_name), exist_ok=True)
     
-def eval_test_results(model, model_name, RGB=False):
-    test_gen, test_ids = get_test_data(RGB=RGB)
-    print(len(test_gen))
+    for i in tqdm(range(0, len(results)), desc='Saving predictions'):
+        cv.imwrite(os.path.join("outputs", "external", model_name, f"{ids[i]}_predicted.png"), results[i]*255)
+    
+def eval_test_results(model, model_name, t_path, RGB=False):
+    test_gen, test_ids = get_test_data(t_path, RGB=RGB)
+    print(f'Test batches: {len(test_gen)}')
     result = model.predict(test_gen)
 
     metrics = ["IMAGE", "SSIM", "MS-SSIM", "MSE", "MAE", "PSNR", "UQI", "CORRELATION", "INTERSECTION", "CHI_SQUARED", "BHATTACHARYYA"]
@@ -219,20 +276,21 @@ def eval_test_results(model, model_name, RGB=False):
     predicted_chisq = []
     predicted_bhatta = []
     
-    workbook = xlsxwriter.Workbook("predictions/512/"+model_name+"/"+model_name+"_predictions_eval.xlsx")
+    out_path = os.path.join("outputs", "internal", model_name)
+    os.makedirs(out_path, exist_ok=True)
+    
+    workbook = xlsxwriter.Workbook(os.path.join(out_path, f"{model_name}_predictions_eval.xlsx"))
     f = workbook.add_worksheet()
 
     for col_num, data in enumerate(metrics):
         f.write(0, col_num, data)
 
-    for i in range(0, len(test_gen)):
+    for i in tqdm(range(0, len(test_gen)), desc='Evaluating results'):
 
         source, target = test_gen.__getitem__(i)
         target = np.array(target).astype('float32')
         temp_result = result[i*BATCH_SIZE:(i+1)*BATCH_SIZE,:]
         temp_result = np.array(temp_result.astype('float32'))
-
-        print(target.shape, temp_result.shape)
         
         for j in range(BATCH_SIZE):
             temp_ssim = ssim(target[j], temp_result[j]).numpy() 
@@ -263,7 +321,6 @@ def eval_test_results(model, model_name, RGB=False):
             temp_chisq = cv.compareHist(hist_gn, hist_pn, cv.HISTCMP_CHISQR)
             temp_bhatta = cv.compareHist(hist_gn, hist_pn, cv.HISTCMP_BHATTACHARYYA)
             
-            
             predicted_ssim.append(temp_ssim)
             predicted_mssim.append(temp_mssim)
             predicted_mse.append(temp_mse)
@@ -281,15 +338,13 @@ def eval_test_results(model, model_name, RGB=False):
                 f.write(i*BATCH_SIZE+j+1, col_num, data)
 
             ## Save results
-            cv.imwrite("predictions/512/"+model_name +"/{0}_pred.png".format(test_ids[i*BATCH_SIZE+j].strip(".png")), temp_result[j]*255)
+            cv.imwrite(os.path.join(out_path, f"{test_ids[i*BATCH_SIZE+j].strip('.png')}_pred.png"), temp_result[j]*255)
     workbook.close()
 
-## FOR DEBONET    
+## FOR DEBONET ENSEMBLE, MATLAB SCRIPT FOR GENERATING THE COMBINED OUTPUT IS AVAILABLE AT: https://github.com/sivaramakrishnan-rajaraman/Bone-Suppresion-Ensemble/blob/main/bone_suppression_ensemble.py    
 def eval_test_results_woPred(pred_path, target_path, model_name):
     pred_ids = sorted(glob.glob(pred_path + "*.png"))
     target_ids = sorted(glob.glob(target_path + "*.png"))
-    print(pred_ids[0], target_ids[0])
-    print(len(pred_ids), len(target_ids))
 
     metrics = ["IMAGE", "SSIM", "MS-SSIM", "MSE", "MAE", "PSNR", "UQI", "CORRELATION", "INTERSECTION", "CHI_SQUARED", "BHATTACHARYYA"]
 
@@ -304,14 +359,17 @@ def eval_test_results_woPred(pred_path, target_path, model_name):
     predicted_chisq = []
     predicted_bhatta = []
     
+    out_path = os.path.join("outputs", "internal", model_name)
+    os.makedirs(out_path, exist_ok=True)
+    
     workbook = xlsxwriter.Workbook(
-        "predictions/512/"+model_name+"/"+model_name+"_predictions_eval.xlsx")
+        os.path.join(out_path, f"{model_name}_predictions_eval.xlsx"))
     f = workbook.add_worksheet()
 
     for col_num, data in enumerate(metrics):
         f.write(0, col_num, data)
 
-    for i in range(0, len(target_ids)):
+    for i in tqdm(range(0, len(target_ids)), desc='Evaluating results'):
 
         pred = cv.imread(pred_ids[i], 0)
         pred = np.expand_dims(pred, axis = -1)
@@ -324,8 +382,6 @@ def eval_test_results_woPred(pred_path, target_path, model_name):
         img_g = target
         target = np.array(target).astype('float32')
         target /= 255.0
-
-        print(target.shape, pred.shape)
         
         temp_ssim = ssim(target, pred).numpy() 
         temp_mssim = ms_ssim(target, pred).numpy()  
@@ -343,8 +399,7 @@ def eval_test_results_woPred(pred_path, target_path, model_name):
         temp_inter = cv.compareHist(hist_gn, hist_pn, cv.HISTCMP_INTERSECT)
         temp_chisq = cv.compareHist(hist_gn, hist_pn, cv.HISTCMP_CHISQR)
         temp_bhatta = cv.compareHist(hist_gn, hist_pn, cv.HISTCMP_BHATTACHARYYA)
-            
-            
+        
         predicted_ssim.append(temp_ssim)
         predicted_mssim.append(temp_mssim)
         predicted_mse.append(temp_mse)
@@ -383,27 +438,24 @@ def compile_model(model):
     
     return model
 
-def train_model(model):
+def train_model(model, path, model_name):
     ## TRAINING
     
     # System paths
-    path = "ribs_suppresion/new/augmented/"
-    source_path = path+"train/"
-    valid_path = path+"val/"
+    source_path = os.path.join(path, "train")
+    valid_path = os.path.join(path, "val")
     
     ## Validation / Training data
     #val_data_size = 720
 
-    train_ids = getIds(source_path+"JSRT/")
-    valid_ids = getIds(valid_path+"JSRT/")
+    train_ids = getIds(os.path.join(source_path, "JSRT"))
+    valid_ids = getIds(os.path.join(valid_path, "JSRT"))
     
     #valid_ids = train_ids[:val_data_size] 
-    print("Validation:")
-    print(len(valid_ids))
+    print(f"Validation: {len(valid_ids)}")
 
     #train_ids = train_ids[val_data_size:]
-    print("Training:")
-    print(len(train_ids))
+    print(f"Training: {len(train_ids)}")
 
     ## Training data generation
     train_gen = DataGen(train_ids, source_path, image_size=SIZE, batch_size=BATCH_SIZE)
@@ -414,46 +466,43 @@ def train_model(model):
 
     train_steps = len(train_ids) // BATCH_SIZE
     valid_steps = len(valid_ids) // BATCH_SIZE
-    print(train_steps)
-    print(valid_steps)
+    print(f'Training steps: {train_steps}')
+    print(f'Validation steps: {valid_steps}')
     
-    model_name = 'XUNETFS'
-    filepath=".tf_checkpoints/512/"+model_name+"/"+model_name+"_b10_f128_best_weights_{epoch:02d}.hdf5"
+    os.makedirs(os.path.join(".tf_checkpoints", model_name), exist_ok=True)
+    filepath = os.path.join(".tf_checkpoints", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{epoch:02d}.hdf5")
     checkpoint = ModelCheckpoint(filepath, verbose=1, save_weights_only=True, monitor='val_loss', save_best_only=True)
     lr_scheduler = LearningRateScheduler(lr_time_based_decay, verbose=1)
     earlyStopping = EarlyStopping(monitor='val_loss', 
-                               patience=10, 
-                               verbose=1, 
-                               mode='min')
+                                patience=10, 
+                                verbose=1, 
+                                mode='min')
     
     callbacks_list = [checkpoint, lr_scheduler, earlyStopping]
     
     history = model.fit(train_gen,
-                    epochs = epochs,
-                    validation_data=valid_gen,
-                    steps_per_epoch=train_steps,
-                    validation_steps=valid_steps,
-                    callbacks=callbacks_list,
-                    verbose=2)
+                        epochs = epochs,
+                        validation_data=valid_gen,
+                        steps_per_epoch=train_steps,
+                        validation_steps=valid_steps,
+                        callbacks=callbacks_list,
+                        verbose=2)
     return history
 
-def train_debonet(model):
+def train_debonet(model, path, model_name):
     ## TRAINING OF THE DeBoNet ENSEMBLE FROM
     # https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0265691
     
     # System paths
-    path = "ribs_suppresion/new/augmented/"
-    source_path = path+"train/"
-    valid_path = path+"val/"
+    source_path = os.path.join(path, "train")
+    valid_path = os.path.join(path, "val")
 
-    train_ids = getIds(source_path+"JSRT/")
-    valid_ids = getIds(valid_path+"JSRT/")
+    train_ids = getIds(os.path.join(source_path, "JSRT"))
+    valid_ids = getIds(os.path.join(valid_path, "JSRT"))
     
-    print("Validation:")
-    print(len(valid_ids))
+    print(f"Validation: {len(valid_ids)}")
 
-    print("Training:")
-    print(len(train_ids))
+    print(f"Training: {len(train_ids)}")
 
     ## Training data generation
     # The backbones require RGB input
@@ -465,42 +514,42 @@ def train_debonet(model):
     ## STEPS
     train_steps = len(train_ids) // BATCH_SIZE
     valid_steps = len(valid_ids) // BATCH_SIZE
-    print(train_steps)
-    print(valid_steps)
+    print(f'Training steps: {train_steps}')
+    print(f'Validation steps: {valid_steps}')
     
     ## NAMES: UNET_RES18, FPN_RES18, FPN_EF0
-    model_name = 'UNET_RES18'
-    filepath=".tf_checkpoints/512/DEBONET/"+model_name+"/"+model_name+"_b10_f256_best_weights_{epoch:02d}.hdf5"
+    os.makedirs(os.path.join(".tf_checkpoints", "DEBONET", model_name), exist_ok=True)
+    filepath = os.path.join(".tf_checkpoints", "DEBONET", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{epoch:02d}.hdf5")
     
     ## SETUP
     checkpoint = ModelCheckpoint(filepath, 
-                             monitor='val_loss', 
-                             verbose=1, 
-                             save_weights_only=True,
-                             save_best_only=True, 
-                             mode='min') 
+                                monitor='val_loss', 
+                                verbose=1, 
+                                save_weights_only=True,
+                                save_best_only=True, 
+                                mode='min') 
     earlyStopping = EarlyStopping(monitor='val_loss', 
-                               patience=10, 
-                               verbose=1, 
-                               mode='min')
-    tensor_board = TensorBoard(log_dir='.logs/', 
-                           histogram_freq=0)
+                                patience=10, 
+                                verbose=1, 
+                                mode='min')
+    tensor_board = TensorBoard(log_dir='.logs/', histogram_freq=0)
     reduce_lr = ReduceLROnPlateau(monitor='val_loss', 
-                              factor=0.5, 
-                              patience=10,
-                              verbose=1, 
-                              mode='min', 
-                              min_lr=0.00001)
+                                factor=0.5, 
+                                patience=10,
+                                verbose=1, 
+                                mode='min', 
+                                min_lr=0.00001)
+    
     callbacks_list = [checkpoint, tensor_board, earlyStopping, reduce_lr]
     
     ## TRAINING
     history = model.fit(train_gen,
-                    epochs = epochs,
-                    validation_data=valid_gen,
-                    steps_per_epoch=train_steps,
-                    validation_steps=valid_steps,
-                    callbacks=callbacks_list,
-                    verbose=2)
+                        epochs = epochs,
+                        validation_data=valid_gen,
+                        steps_per_epoch=train_steps,
+                        validation_steps=valid_steps,
+                        callbacks=callbacks_list,
+                        verbose=2)
     return history
 
 ## LR SCHEDULER FOR KALISZ MARCZYK MODEL
@@ -514,24 +563,21 @@ def scheduler(epoch, lr):
         lrate = initial_lrate * math.pow(drop, math.floor((epoch-100)/epochs_drop))
         return lrate
 
-def train_kalisz(model):
+def train_kalisz(model, path, model_name="KALISZ_AE"):
     ## TRAINING OF THE KALISZ MARCZYK AUTOENCODER FROM
     # https://ieeexplore.ieee.org/abstract/document/9635451
     
     # System paths
-    path = "ribs_suppresion/new/augmented/"
-    source_path = path+"train/"
-    valid_path = path+"val/"
+    source_path = os.path.join(path, "train")
+    valid_path = os.path.join(path, "val")
     
     ## Validation / Training data
-    train_ids = getIds(source_path+"JSRT/")
-    valid_ids = getIds(valid_path+"JSRT/")
+    train_ids = getIds(os.path.join(source_path, "JSRT"))
+    valid_ids = getIds(os.path.join(valid_path, "JSRT"))
     
-    print("Validation:")
-    print(len(valid_ids))
+    print(f"Validation: {len(valid_ids)}")
 
-    print("Training:")
-    print(len(train_ids))
+    print(f"Training: {len(train_ids)}")
 
     ## Training data generation
     train_gen = DataGen(train_ids, source_path, image_size=SIZE, batch_size=BATCH_SIZE)
@@ -542,29 +588,30 @@ def train_kalisz(model):
     ## Steps
     train_steps = len(train_ids) // BATCH_SIZE
     valid_steps = len(valid_ids) // BATCH_SIZE
-    print(train_steps)
-    print(valid_steps)
+    print(f'Training steps: {train_steps}')
+    print(f'Validation steps: {valid_steps}')
     
     ## SETUP
-    model_name = 'KALISZ_AE'
-    filepath=".tf_checkpoints/512/"+model_name+"/"+model_name+"_b10_best_weights_{epoch:02d}.hdf5"
+    os.makedirs(os.path.join(".tf_checkpoints", model_name), exist_ok=True)
+    filepath = os.path.join(".tf_checkpoints", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{epoch:02d}.hdf5")
     checkpoint = ModelCheckpoint(filepath, 
-                             monitor='val_loss', 
-                             verbose=1, 
-                             save_weights_only=True,
-                             save_best_only=True, 
-                             mode='min') 
+                                monitor='val_loss', 
+                                verbose=1, 
+                                save_weights_only=True,
+                                save_best_only=True, 
+                                mode='min') 
     lr_scheduler = LearningRateScheduler(scheduler)
+    
     callbacks_list = [checkpoint, lr_scheduler]
     
     ## TRAINING
     history = model.fit(train_gen,
-                    epochs = 300,
-                    validation_data=valid_gen,
-                    steps_per_epoch=train_steps,
-                    validation_steps=valid_steps,
-                    callbacks=callbacks_list,
-                    verbose=2)
+                        epochs = 300,
+                        validation_data=valid_gen,
+                        steps_per_epoch=train_steps,
+                        validation_steps=valid_steps,
+                        callbacks=callbacks_list,
+                        verbose=2)
     
     ## RETURN RESULTS
     return history

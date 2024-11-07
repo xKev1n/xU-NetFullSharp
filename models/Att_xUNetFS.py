@@ -23,10 +23,10 @@ INPUT_SHAPE = (SIZE, SIZE, 1)
 ## Custom Activation function
 ## xUnit: https://blog.paperspace.com/xunit-spatial-activation/
 def x_unit(x, kernel_size=9):
-    #res = BatchNormalization() (x)
+    # res = BatchNormalization() (x)        # Optional Batch Normalization layer
     res = Activation("relu") (x)
     res = DepthwiseConv2D(kernel_size=kernel_size, padding='same') (res)
-    #res = BatchNormalization() (res)
+    # res = BatchNormalization() (res)      # Optional Batch Normalization layer
     res = Activation("sigmoid") (res)
     
     res = multiply([res, x])

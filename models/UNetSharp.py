@@ -25,7 +25,11 @@ def conv_batchnorm_relu_block(tensor, f):
 
     x = Conv2D(f, (3, 3), padding='same', strides=1) (tensor)
     x = Activation('relu') (x)
+    x = Conv2D(f, (5, 5), padding='same') (x)
+    x = Activation('relu') (x)
     x = Conv2D(f, (3, 3), padding='same', strides=1) (x)
+    x = Activation('relu') (x)
+    x = Conv2D(f, (5, 5), padding='same') (x)
     x = Activation('relu') (x)
     
     return x

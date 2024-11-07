@@ -14,49 +14,6 @@ random.seed = seed
 np.random.seed = seed
 tf.seed = seed
 
-# MAE
-def mae(y_true, y_pred):
-    return tf.math.reduce_mean(tf.keras.losses.MAE(y_true, y_pred))
-
-# MSE
-def mse(y_true, y_pred):
-    return tf.math.reduce_mean(tf.keras.losses.MSE(y_true, y_pred))
-
-# PSNR
-def psnr(y_true, y_pred):
-    return tf.image.psnr(y_true, y_pred, max_val=1.0)
-
-# SSIM
-def ssim(y_true, y_pred):
-    _ssim = tf.math.reduce_mean(tf.image.ssim(y_true, y_pred, max_val=1))
-    return _ssim
-
-# MS-SSIM
-def ms_ssim(y_true, y_pred):
-    _mssim = tf.reduce_mean(tf.image.ssim_multiscale(y_true, y_pred, max_val=1))
-    return _mssim
-
-def ssim_loss(y_true, y_pred):
-    _ssim_loss = tf.image.ssim(y_true, y_pred, max_val=1)
-    _ssim_loss = tf.math.subtract(tf.constant(1.0), _ssim_loss)
-    _ssim_loss = tf.reduce_mean(_ssim_loss)
-
-    return _ssim_loss
-
-def l1_ssim(y_true, y_pred):
-    ALPHA = 0.84
-    DELTA = 1 - ALPHA
-    
-    _ssim_loss = ssim_loss(y_true, y_pred)
-    _ssim_loss = tf.math.multiply(_ssim_loss, ALPHA)
-    
-    _mae = mae(y_true, y_pred)
-    _mae = tf.math.multiply(_mae, DELTA)
-    
-    _loss = tf.math.add(_mae, _ssim_loss)
-    
-    return _loss
-
 # Image size
 SIZE = 512
 INPUT_SHAPE = (SIZE, SIZE, 1)

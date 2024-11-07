@@ -1,8 +1,21 @@
+import random
+import numpy as np 
+import tensorflow as tf
+
 import keras
 from keras.layers import concatenate, Activation, Conv2D, Input, MaxPool2D, UpSampling2D, add, multiply
 import keras.backend as kb
 from keras.models import Model
 
+seed = 2019
+random.seed = seed
+np.random.seed = seed
+tf.seed = seed
+
+
+# Image size
+SIZE = 512
+INPUT_SHAPE = (SIZE, SIZE, 1)
 
 def conv_batchnorm_relu_block(tensor, f):
 
@@ -44,9 +57,6 @@ def attention_block(x, gating, inter_shape):
 
 
 ## ATTENTION U-NET++ MODEL
-
-SIZE = 512
-INPUT_SHAPE = (SIZE, SIZE, 1)
 
 def Att_UNetPP(INPUT_SHAPE = INPUT_SHAPE, DS = False):
 
