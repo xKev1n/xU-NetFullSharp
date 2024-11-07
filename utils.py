@@ -236,7 +236,7 @@ def test_model(model, t_path, RGB=False, random=False):
     for i in tqdm(range(0, len(data), BATCH_SIZE), desc='Performing inference'):
         batch_data = data[i:i+BATCH_SIZE]
         start = time.time()
-        result = model.predict(batch_data)
+        result = model(batch_data, training=False)
         end = time.time()
         results.extend(result)
         times.append(end-start)
@@ -256,7 +256,7 @@ def eval_results(results, ids, model_name):
     os.makedirs(os.path.join("outputs", "external", model_name), exist_ok=True)
     
     for i in tqdm(range(0, len(results)), desc='Saving predictions'):
-        cv.imwrite(os.path.join("outputs", "external", model_name, f"{ids[i]}_predicted.png"), results[i]*255)
+        cv.imwrite(os.path.join("outputs", "external", model_name, f"{ids[i].split('.')[0]}_predicted.png"), results[i]*255)
     
 def eval_test_results(model, model_name, t_path, RGB=False):
     test_gen, test_ids = get_test_data(t_path, RGB=RGB)
@@ -332,13 +332,14 @@ def eval_test_results(model, model_name, t_path, RGB=False):
             predicted_chisq.append(temp_chisq)
             predicted_bhatta.append(temp_bhatta)
 
-            vals = [test_ids[i*BATCH_SIZE+j].strip(".png"), temp_ssim, temp_mssim, temp_mse, temp_mae, temp_psnr, temp_uqi, temp_corr, temp_inter, temp_chisq, temp_bhatta]
+            name = os.path.splitext(test_ids[i*BATCH_SIZE+j])[0]
+            vals = [name, temp_ssim, temp_mssim, temp_mse, temp_mae, temp_psnr, temp_uqi, temp_corr, temp_inter, temp_chisq, temp_bhatta]
             
             for col_num, data in enumerate(vals):
                 f.write(i*BATCH_SIZE+j+1, col_num, data)
 
             ## Save results
-            cv.imwrite(os.path.join(out_path, f"{test_ids[i*BATCH_SIZE+j].strip('.png')}_pred.png"), temp_result[j]*255)
+            cv.imwrite(os.path.join(out_path, f"{name}_pred.png"), temp_result[j]*255)
     workbook.close()
 
 ## FOR DEBONET ENSEMBLE, MATLAB SCRIPT FOR GENERATING THE COMBINED OUTPUT IS AVAILABLE AT: https://github.com/sivaramakrishnan-rajaraman/Bone-Suppresion-Ensemble/blob/main/bone_suppression_ensemble.py    
@@ -411,7 +412,7 @@ def eval_test_results_woPred(pred_path, target_path, model_name):
         predicted_chisq.append(temp_chisq)
         predicted_bhatta.append(temp_bhatta)
 
-        vals = [target_ids[i].strip(".png"), temp_ssim, temp_mssim, temp_mse, temp_mae, temp_psnr, temp_uqi, temp_corr, temp_inter, temp_chisq, temp_bhatta]
+        vals = [os.path.splitext(target_ids[i])[0], temp_ssim, temp_mssim, temp_mse, temp_mae, temp_psnr, temp_uqi, temp_corr, temp_inter, temp_chisq, temp_bhatta]
             
         for col_num, data in enumerate(vals):
             f.write(i+1, col_num, data)
