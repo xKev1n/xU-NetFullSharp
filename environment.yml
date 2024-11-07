@@ -1,0 +1,17 @@
+name: bone_suppression
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - cudatoolkit=11.2
+  - cudnn=8.1.0
+  - numpy<2
+  - tensorflow=2.10
+  - opencv
+  - xlsxwriter
+  - tqdm
+  - pip
+  - pip:
+    - sewar
+    - segmentation_models

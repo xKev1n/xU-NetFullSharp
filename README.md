@@ -15,13 +15,46 @@ In this paper, an automated deep learning-based framework for bone shadow suppre
 </div>
   
 
-## Quick Start Python Code
-
+## Quick Start Python Guide
+To create working environment, you can use conda with the following command:
 <pre>
 <code>
-# CODE EXAMPLE IS UNDER CONSTRUCTION
+conda env create -f environment.yml
 </code>
 </pre>
+
+You can activate the conda environment by executing:
+<pre>
+<code>
+conda activate bone_suppression
+</code>
+</pre>
+
+You can test individual models on external datasets by executing:
+<pre>
+<code>
+python test.py --model_name <desired_model> --test_variant <external | internal> --data_path <path_to_desired_dataset>
+</code>
+</pre>
+Supported models are currently the following: "KALISZ_AE", "UNET3P", "UNETPP", "UNET", "ATT_UNET", "ATT_UNETPP", "DEEP_RESUNET", "UNET_SHARP", "XUNETFS", "ATT_XUNETFS", "UNET_RES18", "FPN_RES18", "FPN_EF0".
+
+When performing internal test, the `test.py` script expects the destination folder to have subfolders `JSRT` and `BSE_JSRT`. The `JSRT` directory contains the original X-ray images, while the `BSE_JSRT` directory contains the corresponding ground truth images.
+The external test variant extracts any images in the destination folders, preprocesses them and calls the inference.
+The outputs are saved into directory `outputs`.
+
+For training, you can use `train.py` script in a following way:
+<pre>
+<code>
+python train.py --model_name <desired_model> --data_path <dataset_directory>
+</code>
+</pre>
+or
+<pre>
+<code>
+python train.py --model_name <desired_model> --data_path <dataset_directory> --weights_path <weights_path>
+</code>
+</pre>
+if you want to load weights before training.
 
 ## Downloads
 - [Pretrained model weights](https://vutbr-my.sharepoint.com/:u:/g/personal/burgetrm_vutbr_cz/EaxYf0RZYCVClFDVpvfqdtsBL1DUV0B81pE1Hy_C1W7bOg?e=buBH8N)

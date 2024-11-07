@@ -95,7 +95,7 @@ def main(args):
 
     # Training
     if model_name == "KALISZ_AE":
-        history = train_kalisz(model, args.data_path, model_name)
+        history = train_kalisz(model, args.data_path,  model_name)
     elif model_name in ["UNET_RES18", "FPN_RES18", "FPN_EF0"]:
         history = train_debonet(model, args.data_path, model_name)
     else:

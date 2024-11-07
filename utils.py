@@ -563,7 +563,7 @@ def scheduler(epoch, lr):
         lrate = initial_lrate * math.pow(drop, math.floor((epoch-100)/epochs_drop))
         return lrate
 
-def train_kalisz(model, path, model_name="KALISZ_AE"):
+def train_kalisz(model, path, epochs=300, model_name="KALISZ_AE"):
     ## TRAINING OF THE KALISZ MARCZYK AUTOENCODER FROM
     # https://ieeexplore.ieee.org/abstract/document/9635451
     
@@ -606,7 +606,7 @@ def train_kalisz(model, path, model_name="KALISZ_AE"):
     
     ## TRAINING
     history = model.fit(train_gen,
-                        epochs = 300,
+                        epochs = epochs,
                         validation_data=valid_gen,
                         steps_per_epoch=train_steps,
                         validation_steps=valid_steps,
