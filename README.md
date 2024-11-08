@@ -8,7 +8,7 @@
 
 <div align="justify">
   
-In this paper, an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Multiple deep learning-based CNN architectures were implemented to fulfill this task. Among those, a novel neural network architecture called xU-NetFullSharp was proposed. This network is inspired by the most modern U-NetSharp [8] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [9] and [3] designed for this task were used for comparison. Code for the utilized models is available in the `models` folder in this repository.
+In this [paper](https://www.sciencedirect.com/science/article/pii/S1746809424010413?dgcid=author), an automated deep learning-based framework for bone shadow suppression from frontal CXRs is developed. The framework was inspired by U-Net-based convolutional neural networks (CNNs). Multiple deep learning-based CNN architectures were implemented to fulfill this task. Among those, a novel neural network architecture called xU-NetFullSharp was proposed. This network is inspired by the most modern U-NetSharp [8] architecture and combines different approaches to preserve as many details, as possible and accurately suppress bone shadows. Additionally, recent state-of-the-art CNN models from [9] and [3] designed for this task were used for comparison. Code for the utilized models is available in the `models` folder in this repository.
 
 
 <div align="center">
