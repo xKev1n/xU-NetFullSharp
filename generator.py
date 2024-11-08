@@ -14,10 +14,9 @@ IMAGE_SIZE = 512
 BATCH_SIZE = 10
 
 def preprocess_image(image):
-    img = cv.normalize(image, None, 0, 255, cv.NORM_MINMAX)
     if random() < .5:
-        img = cv.bitwise_not(img)    # INVERT THE IMAGE WITH 50 % PROBABILITY
-    return img
+        image = cv.bitwise_not(image)    # INVERT THE IMAGE WITH 50 % PROBABILITY
+    return image
 
 ## DATA GENERATOR
 

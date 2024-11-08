@@ -214,7 +214,7 @@ def get_unseen_data(t_path, random=False, RGB=False):
             img = cv.imread(data, 0)
             img = np.expand_dims(img, axis = -1)
             if (img.shape != (SIZE, SIZE, 1)):
-                img = cv.resize(img, (SIZE, SIZE))
+                img = cv.resize(img, (SIZE, SIZE), interpolation=cv.INTER_LANCZOS4)
         
         img = preprocess_image(img)
         img = img_to_array(img)

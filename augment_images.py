@@ -18,15 +18,14 @@ from tqdm import tqdm
 
 
 def preprocess_image(image):
-    img = cv.normalize(image, None, 0, 255, cv.NORM_MINMAX)
     #img = cv.bitwise_not(img)    # INVERT THE IMAGE
-    img = np.expand_dims(img, axis = -1)
-    if (type(img) == tf.uint16):
-        img /= 65535.0
-    elif(type(img) == tf.uint8):
-        img /= 255.0
+    image = np.expand_dims(image, axis = -1)
+    if (type(image) == tf.uint16):
+        image /= 65535.0
+    elif(type(image) == tf.uint8):
+        image /= 255.0
     
-    return np.array(img)
+    return np.array(image)
 
 
 seed = 2019
