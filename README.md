@@ -50,7 +50,7 @@ python test.py --model_name <desired_model> --test_variant <external | internal>
 - `U-Net#`: `"UNET_SHARP"` [8]
 - `xU-NetFullSharp` (Ours): `"XUNETFS"`, `"ATT_XUNETFS"`
 - `Kalisz-Marczyk Autoencoder` [3]: `"KALISZ_AE"`
-- `DeBoNet` [9]: `"UNET_RES18"`, `"FPN_RES18"`, `"FPN_EF0"`
+- `DeBoNet` [9]: `"UNET_RES18"`, `"FPN_RES18"`, `"FPN_EF0"` (Outputs from the proposed ensemble can be generated using the [Matlab script](https://github.com/sivaramakrishnan-rajaraman/Bone-Suppresion-Ensemble/blob/main/bone_suppression_ensemble.py) (commented out at the end of the file) provided by the authors.)
 
 #### Internal vs. External Testing
 
