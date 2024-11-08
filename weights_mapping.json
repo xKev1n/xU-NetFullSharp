@@ -1,0 +1,15 @@
+{
+    "KALISZ_AE": "weights/KALISZ_AE/KALISZ_AE_b10_best_weights_298.hdf5",
+    "UNET3P": "weights/UNET3P/UNET3P_b10_best_weights_37.hdf5",
+    "UNETPP": "weights/UNETPP/UNETPP_b10_best_weights_62.hdf5",
+    "UNET": "weights/UNET/UNET_b10_best_weights_82.hdf5",
+    "ATT_UNET": "weights/ATT_UNET/ATT_UNET_b10_best_weights_61.hdf5",
+    "ATT_UNETPP": "weights/ATT_UNETPP/ATT_UNETPP_b10_best_weights_70.hdf5",
+    "DEEP_RESUNET": "weights/DEEP_RESUNET/DEEP_RESUNET_b10_best_weights_26.hdf5",
+    "UNET_SHARP": "weights/UNET_SHARP/UNET_SHARP_b10_best_weights_74.hdf5",
+    "XUNETFS": "weights/XUNETFS/XUNETFS_b10_best_weights_30.hdf5",
+    "ATT_XUNETFS": "weights/ATT_XUNETFS/ATT_XUNETFS_b10_best_weights_26.hdf5",
+    "UNET_RES18": "weights/UNET_RES18/UNET_RES18_b10_best_weights_11.hdf5",
+    "FPN_RES18": "weights/FPN_RES18/FPN_RES18_b10_best_weights_17.hdf5",
+    "FPN_EF0": "weights/FPN_EF0/FPN_EF0_b10_best_weights_05.hdf5"
+}

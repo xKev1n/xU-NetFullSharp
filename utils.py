@@ -27,7 +27,7 @@ np.random.seed = seed
 # Image size
 SIZE = 512
 INPUT_SHAPE = (SIZE, SIZE, 1)
-BATCH_SIZE = 10
+BATCH_SIZE = 5
 
 ## LOSS FUNCTIONS
 
@@ -233,8 +233,9 @@ def test_model(model, t_path, RGB=False, random=False):
     times = []
     data, ids = get_unseen_data(t_path, random=random, RGB=RGB)
     import time
-    for i in tqdm(range(0, len(data), BATCH_SIZE), desc='Performing inference'):
-        batch_data = data[i:i+BATCH_SIZE]
+    total_batches = (len(data) + BATCH_SIZE - 1) // BATCH_SIZE  # Adjusts for partial batches
+    for i in tqdm(range(total_batches), desc='Performing inference'):
+        batch_data = data[i*BATCH_SIZE:(i+1)*BATCH_SIZE]
         start = time.time()
         result = model(batch_data, training=False)
         end = time.time()
@@ -257,7 +258,7 @@ def eval_results(results, ids, model_name):
     
     for i in tqdm(range(0, len(results)), desc='Saving predictions'):
         cv.imwrite(os.path.join("outputs", "external", model_name, f"{ids[i].split('.')[0]}_predicted.png"), results[i]*255)
-    
+
 def eval_test_results(model, model_name, t_path, RGB=False):
     test_gen, test_ids = get_test_data(t_path, RGB=RGB)
     print(f'Test batches: {len(test_gen)}')
@@ -285,14 +286,15 @@ def eval_test_results(model, model_name, t_path, RGB=False):
     for col_num, data in enumerate(metrics):
         f.write(0, col_num, data)
 
-    for i in tqdm(range(0, len(test_gen)), desc='Evaluating results'):
+    total_batches = (len(test_gen) + BATCH_SIZE - 1) // BATCH_SIZE  # Adjust for partial batches
 
+    for i in tqdm(range(total_batches), desc='Evaluating results'):
         source, target = test_gen.__getitem__(i)
         target = np.array(target).astype('float32')
         temp_result = result[i*BATCH_SIZE:(i+1)*BATCH_SIZE,:]
         temp_result = np.array(temp_result.astype('float32'))
         
-        for j in range(BATCH_SIZE):
+        for j in range(temp_result.shape[0]):  # Handle partial batches
             temp_ssim = ssim(target[j], temp_result[j]).numpy() 
             temp_mssim = ms_ssim(target[j], temp_result[j]).numpy()  
             temp_mse = mse(target[j], temp_result[j]).numpy()
@@ -302,16 +304,16 @@ def eval_test_results(model, model_name, t_path, RGB=False):
             
             ## Convert to grayscale
             if target[j].shape[2] == 3:
-                target[j] = cv.cvtColor(target[j],cv.COLOR_BGR2GRAY)
+                target[j] = cv.cvtColor(target[j], cv.COLOR_BGR2GRAY)
             if temp_result[j].shape[2] == 3:
-                temp_result[j] = cv.cvtColor(temp_result[j],cv.COLOR_BGR2GRAY)
+                temp_result[j] = cv.cvtColor(temp_result[j], cv.COLOR_BGR2GRAY)
             
-            img_g = target[j]*255
-            img_p = temp_result[j]*255
+            img_g = target[j] * 255
+            img_p = temp_result[j] * 255
             
             ## Calculate histograms
-            hist_g = cv.calcHist([img_g],[0],None,[256],[0,256])
-            hist_p = cv.calcHist([img_p],[0],None,[256],[0,256])
+            hist_g = cv.calcHist([img_g], [0], None, [256], [0, 256])
+            hist_p = cv.calcHist([img_p], [0], None, [256], [0, 256])
             hist_gn = cv.normalize(hist_g, hist_g).flatten()
             hist_pn = cv.normalize(hist_p, hist_p).flatten()
             
@@ -339,7 +341,7 @@ def eval_test_results(model, model_name, t_path, RGB=False):
                 f.write(i*BATCH_SIZE+j+1, col_num, data)
 
             ## Save results
-            cv.imwrite(os.path.join(out_path, f"{name}_pred.png"), temp_result[j]*255)
+            cv.imwrite(os.path.join(out_path, f"{name}_pred.png"), temp_result[j] * 255)
     workbook.close()
 
 ## FOR DEBONET ENSEMBLE, MATLAB SCRIPT FOR GENERATING THE COMBINED OUTPUT IS AVAILABLE AT: https://github.com/sivaramakrishnan-rajaraman/Bone-Suppresion-Ensemble/blob/main/bone_suppression_ensemble.py    
@@ -471,7 +473,7 @@ def train_model(model, path, model_name):
     print(f'Validation steps: {valid_steps}')
     
     os.makedirs(os.path.join(".tf_checkpoints", model_name), exist_ok=True)
-    filepath = os.path.join(".tf_checkpoints", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{epoch:02d}.hdf5")
+    filepath = os.path.join(".tf_checkpoints", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{{epoch:02d}}.hdf5")
     checkpoint = ModelCheckpoint(filepath, verbose=1, save_weights_only=True, monitor='val_loss', save_best_only=True)
     lr_scheduler = LearningRateScheduler(lr_time_based_decay, verbose=1)
     earlyStopping = EarlyStopping(monitor='val_loss', 
@@ -487,7 +489,7 @@ def train_model(model, path, model_name):
                         steps_per_epoch=train_steps,
                         validation_steps=valid_steps,
                         callbacks=callbacks_list,
-                        verbose=2)
+                        verbose=1)
     return history
 
 def train_debonet(model, path, model_name):
@@ -520,7 +522,7 @@ def train_debonet(model, path, model_name):
     
     ## NAMES: UNET_RES18, FPN_RES18, FPN_EF0
     os.makedirs(os.path.join(".tf_checkpoints", "DEBONET", model_name), exist_ok=True)
-    filepath = os.path.join(".tf_checkpoints", "DEBONET", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{epoch:02d}.hdf5")
+    filepath = os.path.join(".tf_checkpoints", "DEBONET", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{{epoch:02d}}.hdf5")
     
     ## SETUP
     checkpoint = ModelCheckpoint(filepath, 
@@ -550,7 +552,7 @@ def train_debonet(model, path, model_name):
                         steps_per_epoch=train_steps,
                         validation_steps=valid_steps,
                         callbacks=callbacks_list,
-                        verbose=2)
+                        verbose=1)
     return history
 
 ## LR SCHEDULER FOR KALISZ MARCZYK MODEL
@@ -594,7 +596,7 @@ def train_kalisz(model, path, epochs=300, model_name="KALISZ_AE"):
     
     ## SETUP
     os.makedirs(os.path.join(".tf_checkpoints", model_name), exist_ok=True)
-    filepath = os.path.join(".tf_checkpoints", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{epoch:02d}.hdf5")
+    filepath = os.path.join(".tf_checkpoints", model_name, f"{model_name}_b{BATCH_SIZE}_best_weights_{{epoch:02d}}.hdf5")
     checkpoint = ModelCheckpoint(filepath, 
                                 monitor='val_loss', 
                                 verbose=1, 
@@ -612,7 +614,7 @@ def train_kalisz(model, path, epochs=300, model_name="KALISZ_AE"):
                         steps_per_epoch=train_steps,
                         validation_steps=valid_steps,
                         callbacks=callbacks_list,
-                        verbose=2)
+                        verbose=1)
     
     ## RETURN RESULTS
     return history

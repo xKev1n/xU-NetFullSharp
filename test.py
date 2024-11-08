@@ -15,68 +15,56 @@ from models.Att_xUNetFS import Att_xUNetFS
 import tensorflow as tf
 import numpy as np
 import os
+import json
 
-available_models = ["KALISZ_AE", "UNET3P", "UNETPP", "UNET", "ATT_UNET", "ATT_UNETPP", "DEEP_RESUNET", "UNET_SHARP", "XUNETFS", "ATT_XUNETFS", "UNET_RES18", "FPN_RES18", "FPN_EF0"]
+# Load the JSON file
+with open("weights_mapping.json", "r") as file:
+    weights_mapping = json.load(file)
+
+# Function to get weights path by model name
+def get_weights_path(model_name):
+    try:
+        return weights_mapping[model_name]
+    except KeyError:
+        raise ValueError(f"Model {model_name} is not recognized.\nAvailable models: {list(weights_mapping.keys())}")
 
 def main(args):
     # Model selection based on input argument
     
     model_name = args.model_name
+    
     if model_name == "UNET_RES18":
         model = DeBoNet(COMPILE=False, NAME=model_name)
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_11.hdf5"))
     if model_name == "FPN_RES18":
         model = DeBoNet(COMPILE=False, NAME=model_name)
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_17.hdf5"))
     if model_name == "FPN_EF0":
         model = DeBoNet(COMPILE=False, NAME=model_name)
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_05.hdf5"))
     elif model_name == "KALISZ_AE":
         model = KaliszAE()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_298.hdf5"))
     elif model_name == "UNET3P":
         model = UNet3P()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_37.hdf5"))
     elif model_name == "UNETPP":
         model = UNetPP()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_62.hdf5"))
     elif model_name == "UNET":
         model = UNet()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_82.hdf5"))
     elif model_name == "ATT_UNET":
         model = Att_UNet()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_61.hdf5"))
     elif model_name == "ATT_UNETPP":
         model = Att_UNetPP()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_70.hdf5"))
     elif model_name == "DEEP_RESUNET":
         model = DeepResUNet()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_26.hdf5"))
     elif model_name == "UNET_SHARP":
         model = UNetSharp()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_74.hdf5"))
     elif model_name == "XUNETFS":
         model = xUNetFS()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_30.hdf5"))
     elif model_name == "ATT_XUNETFS":
         model = Att_xUNetFS()
-        # Load model weights
-        load_weights(model, os.path.join("weights", model_name, model_name+"_b10_best_weights_26.hdf5"))
     else:
-        raise ValueError(f"Model {model_name} is not recognized.\nAvailable models: {available_models}")
+        raise ValueError(f"Model {model_name} is not recognized.\nAvailable models: {list(weights_mapping.keys())}")
 
+    # Load model weights
+    load_weights(model, get_weights_path(model_name))
+    
     # Compute the GFLOPs of the model
     x = tf.constant(np.random.randn(1, 512, 512, 1))
     print(f'GFLOPs: {get_flops(model, [x])}')
@@ -101,9 +89,9 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Model evaluation script with customizable arguments.")
-    parser.add_argument("--model_name", type=str, required=True, help="Name of the model to use.", choices=available_models)
+    parser.add_argument("--model_name", type=str, required=True, help="Name of the model to use.", choices=list(weights_mapping.keys()))
     parser.add_argument("--data_path", type=str, required=True, help="Path to test images.")
-    parser.add_argument("--test_variant", type=str, choices=["internal", "external"], required=False, default="both", help="Variant of the test set to use: 'internal', 'external'. The INTERNAL test path directory should contain 'JSRT' and 'BSE_JSRT' subdirectories. JSRT contains the original images and BSE_JSRT contains the corresponding ground truth images. The EXTERNAL path directory should contain just the test images.")
+    parser.add_argument("--test_variant", type=str, choices=["internal", "external"], required=False, default="external", help="Variant of the test set to use: 'internal', 'external'. The INTERNAL test path directory should contain 'JSRT' and 'BSE_JSRT' subdirectories. JSRT contains the original images and BSE_JSRT contains the corresponding ground truth images. The EXTERNAL path directory should contain just the test images.")
 
     args = parser.parse_args()
     main(args)

@@ -67,6 +67,8 @@ If you want to initialize the model with pre-trained weights, include the `--wei
 python train.py --model_name <desired_model> --data_path <dataset_directory> --weights_path <weights_path>
 ```
 
+The `dataset_directory` should contain subdirectories named `train` and `val`. Both of these directories should contain `JSRT` and `BSE_JSRT` subdirectories with the same properties as described above.
+
 ## Downloads
 - [Pretrained model weights](https://vutbr-my.sharepoint.com/:u:/g/personal/burgetrm_vutbr_cz/EaxYf0RZYCVClFDVpvfqdtsBL1DUV0B81pE1Hy_C1W7bOg?e=buBH8N)
 

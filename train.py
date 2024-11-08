@@ -15,81 +15,57 @@ from models.Att_xUNetFS import Att_xUNetFS
 import tensorflow as tf
 import numpy as np
 import os
+import json
 
-available_models = ["KALISZ_AE", "UNET3P", "UNETPP", "UNET", "ATT_UNET", "ATT_UNETPP", "DEEP_RESUNET", "UNET_SHARP", "XUNETFS", "ATT_XUNETFS", "UNET_RES18", "FPN_RES18", "FPN_EF0"]
+# Load the JSON file
+with open("weights_mapping.json", "r") as file:
+    weights_mapping = json.load(file)
+
+# Function to get weights path by model name
+def get_weights_path(model_name):
+    try:
+        return weights_mapping[model_name]
+    except KeyError:
+        raise ValueError(f"Model {model_name} is not recognized.\nAvailable models: {list(weights_mapping.keys())}")
 
 def main(args):
     # Model selection based on input argument
     
     model_name = args.model_name
+    
     if model_name == "UNET_RES18":
         model = DeBoNet(COMPILE=False, NAME=model_name)
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
-    elif model_name == "FPN_RES18":
+    if model_name == "FPN_RES18":
         model = DeBoNet(COMPILE=False, NAME=model_name)
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
-    elif model_name == "FPN_EF0":
+    if model_name == "FPN_EF0":
         model = DeBoNet(COMPILE=False, NAME=model_name)
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "KALISZ_AE":
         model = KaliszAE()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "UNET3P":
         model = UNet3P()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "UNETPP":
         model = UNetPP()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "UNET":
         model = UNet()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "ATT_UNET":
         model = Att_UNet()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "ATT_UNETPP":
         model = Att_UNetPP()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "DEEP_RESUNET":
         model = DeepResUNet()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "UNET_SHARP":
         model = UNetSharp()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "XUNETFS":
         model = xUNetFS()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     elif model_name == "ATT_XUNETFS":
         model = Att_xUNetFS()
-        # Load model weights if needed
-        if args.weights_path:
-            load_weights(model, args.weights_path)
     else:
-        raise ValueError(f"Model {model_name} is not recognized.\nAvailable models: {available_models}")
+        raise ValueError(f"Model {model_name} is not recognized.\nAvailable models: {list(weights_mapping.keys())}")
 
+    if args.weights_path:
+        # Load model weights
+        load_weights(model, get_weights_path(model_name))
+    
     # Compile the model
     model = compile_model(model)
 
@@ -103,7 +79,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Model training script with customizable arguments.")
-    parser.add_argument("--model_name", type=str, required=True, help="Name of the model to use.", choices=available_models)
+    parser.add_argument("--model_name", type=str, required=True, help="Name of the model to use.", choices=list(weights_mapping.keys()))
     parser.add_argument("--data_path", type=str, required=True, help="Path to training data. The training directory should contain 'train' and 'val' subdirectories. The 'train' and 'val' directories should contain 'JSRT' and 'BSE_JSRT' subdirectories. JSRT contains the original images and BSE_JSRT contains the corresponding ground truth images.")
     parser.add_argument("--weights_path", type=str, required=False, help="Path to model weights to load before training.")
 
