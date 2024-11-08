@@ -398,72 +398,72 @@ keywords = {Deep learning, Bone shadow suppression, X-ray images, Medical Imagin
 
 <div align="justify">
   
-  [1] Gusarev, M., Kuleev, R., Khan, A., Ramirez Rivera, A., & Khattak, A. M. (2017). Deep learning models for bone suppression in chest radiographs. 2017 IEEE Conference on Computational Intelligence in Bioinformatics and Computational Biology (CIBCB), 1–7. <https://doi.org/10.1109/CIBCB.2017.8058543>
+  [1]   Gusarev, M., Kuleev, R., Khan, A., Ramirez Rivera, A., & Khattak, A. M. (2017). Deep learning models for bone suppression in chest radiographs. 2017 IEEE Conference on Computational Intelligence in Bioinformatics and Computational Biology (CIBCB), 1–7. <https://doi.org/10.1109/CIBCB.2017.8058543>
   
 </div>
 
 <div align="justify">
   
-  [2] Huang, H., Lin, L., Tong, R., Hu, H., Zhang, Q., Iwamoto, Y., Han, X., Chen, Y.-W., & Wu, J. (2020). UNet 3+: A Full-Scale Connected UNet for Medical Image Segmentation. ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1055–1059. <https://doi.org/10.1109/ICASSP40776.2020.9053405>
+  [2]   Huang, H., Lin, L., Tong, R., Hu, H., Zhang, Q., Iwamoto, Y., Han, X., Chen, Y.-W., & Wu, J. (2020). UNet 3+: A Full-Scale Connected UNet for Medical Image Segmentation. ICASSP 2020 - 2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1055–1059. <https://doi.org/10.1109/ICASSP40776.2020.9053405>
   
 </div>
 
 <div align="justify">
   
-  [3] Kalisz, S., & Marczyk, M. (2021). Autoencoder-based bone removal algorithm from x-ray images of the lung. 2021 IEEE 21st International Conference on Bioinformatics and Bioengineering (BIBE), 1–6.
+  [3]   Kalisz, S., & Marczyk, M. (2021). Autoencoder-based bone removal algorithm from x-ray images of the lung. 2021 IEEE 21st International Conference on Bioinformatics and Bioengineering (BIBE), 1–6.
   
 </div>
 
 <div align="justify">
   
-  [4] Kligvasser, I., Shaham, T. R., & Michaeli, T. (2017). xUnit: Learning a Spatial Activation Function for Efficient Image  Restoration. CoRR, abs/1711.06445. <http://arxiv.org/abs/1711.06445>
+  [4]   Kligvasser, I., Shaham, T. R., & Michaeli, T. (2017). xUnit: Learning a Spatial Activation Function for Efficient Image  Restoration. CoRR, abs/1711.06445. <http://arxiv.org/abs/1711.06445>
   
 </div>
 
 <div align="justify">
 
-  [5] Li, C., Tan, Y., Chen, W., Luo, X., Gao, Y., Jia, X., & Wang, Z. (2020). Attention Unet++: A Nested Attention-Aware U-Net for Liver CT Image Segmentation. 2020 IEEE International Conference on Image Processing (ICIP), 345–349. <https://doi.org/10.1109/ICIP40778.2020.9190761>
+  [5]   Li, C., Tan, Y., Chen, W., Luo, X., Gao, Y., Jia, X., & Wang, Z. (2020). Attention Unet++: A Nested Attention-Aware U-Net for Liver CT Image Segmentation. 2020 IEEE International Conference on Image Processing (ICIP), 345–349. <https://doi.org/10.1109/ICIP40778.2020.9190761>
 
 </div>
 
 <div align="justify">
   
-  [6] Nguyen, H. Q., Lam, K., Le, L. T., Pham, H. H., Tran, D. Q., Nguyen, D. B., Le, D. D., Pham, C. M., Tong, H. T. T., Dinh, D. H., Do, C. D., Doan, L. T., Nguyen, C. N., Nguyen, B. T., Nguyen, Q. v, Hoang, A. D., Phan, H. N., Nguyen, A. T., Ho, P. H., … Vu, V. (2022). VinDr-CXR: An open dataset of chest X-rays with radiologist’s annotations.
+  [6]   Nguyen, H. Q., Lam, K., Le, L. T., Pham, H. H., Tran, D. Q., Nguyen, D. B., Le, D. D., Pham, C. M., Tong, H. T. T., Dinh, D. H., Do, C. D., Doan, L. T., Nguyen, C. N., Nguyen, B. T., Nguyen, Q. v, Hoang, A. D., Phan, H. N., Nguyen, A. T., Ho, P. H., … Vu, V. (2022). VinDr-CXR: An open dataset of chest X-rays with radiologist’s annotations.
   
 </div>
 
 <div align="justify">
 
-  [7] Oktay, O., Schlemper, J., Folgoc, L. le, Lee, M. C. H., Heinrich, M. P., Misawa, K., Mori, K., McDonagh, S. G., Hammerla, N. Y., Kainz, B., Glocker, B., & Rueckert, D. (2018). Attention U-Net: Learning Where to Look for the Pancreas. CoRR, abs/1804.03999. <http://arxiv.org/abs/1804.03999>
+  [7]   Oktay, O., Schlemper, J., Folgoc, L. le, Lee, M. C. H., Heinrich, M. P., Misawa, K., Mori, K., McDonagh, S. G., Hammerla, N. Y., Kainz, B., Glocker, B., & Rueckert, D. (2018). Attention U-Net: Learning Where to Look for the Pancreas. CoRR, abs/1804.03999. <http://arxiv.org/abs/1804.03999>
 
 </div>
 
 <div align="justify">
   
-  [8] Qian, L., Zhou, X., Li, Y., & Hu, Z. (2022). UNet#: A UNet-like Redesigning Skip Connections for Medical Image Segmentation. ArXiv Preprint ArXiv:2205.11759.
+  [8]   Qian, L., Zhou, X., Li, Y., & Hu, Z. (2022). UNet#: A UNet-like Redesigning Skip Connections for Medical Image Segmentation. ArXiv Preprint ArXiv:2205.11759.
   
 </div>
 
 <div align="justify">
   
-  [9] Rajaraman, S., Cohen, G., Spear, L., Folio, L., & Antani, S. (2022). DeBoNet: A deep bone suppression model ensemble to improve disease detection in chest radiographs. Plos One, 17(3), e0265691.
+  [9]   Rajaraman, S., Cohen, G., Spear, L., Folio, L., & Antani, S. (2022). DeBoNet: A deep bone suppression model ensemble to improve disease detection in chest radiographs. Plos One, 17(3), e0265691.
   
 </div>
 
 <div align="justify">
 
-  [10] Ronneberger, O., Fischer, P., & Brox, T. (2015). U-Net: Convolutional Networks for Biomedical Image Segmentation.
+  [10]  Ronneberger, O., Fischer, P., & Brox, T. (2015). U-Net: Convolutional Networks for Biomedical Image Segmentation.
 
 </div>
 
 <div align="justify">
 
-  [11] Zhang, Z., Liu, Q., & Wang, Y. (2017). Road Extraction by Deep Residual U-Net. CoRR, abs/1711.10684. <http://arxiv.org/abs/1711.10684>
+  [11]  Zhang, Z., Liu, Q., & Wang, Y. (2017). Road Extraction by Deep Residual U-Net. CoRR, abs/1711.10684. <http://arxiv.org/abs/1711.10684>
 
 </div>
 
 <div align="justify">
   
-  [12] Zhou, Z., Siddiquee, M. M. R., Tajbakhsh, N., & Liang, J. (2018). UNet++: A Nested U-Net Architecture for Medical Image Segmentation. CoRR, abs/1807.10165. <http://arxiv.org/abs/1807.10165>
+  [12]  Zhou, Z., Siddiquee, M. M. R., Tajbakhsh, N., & Liang, J. (2018). UNet++: A Nested U-Net Architecture for Medical Image Segmentation. CoRR, abs/1807.10165. <http://arxiv.org/abs/1807.10165>
   
 </div>
